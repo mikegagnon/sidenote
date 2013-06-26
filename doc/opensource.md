@@ -1,9 +1,26 @@
 Github
 ------
-Less than 200 lines of Python code, along with some simple HTML and Javascript.
 
-Apache License, Version 2.0
----------------------------
+[https://github.com/mikegagnon/sidenote](https://github.com/mikegagnon/sidenote)
+
+### Sidenote is implemented as:
+
+* [A small python program](https://github.com/mikegagnon/sidenote/blob/master/sidenote.py) that extends Markdown with [Sidenote link syntax](##sidenote_link).
+* [A small JavaScript library](https://github.com/mikegagnon/sidenote/blob/master/js/sidenote.js) that renders Sidenote documents.
+
+### Sidenote uses:
+
+* jQuery
+* D3
+* Lo-Dash
+
+### All feedback welcome!
+
+* Send me an email at [mikegagnon@gmail.com](mailto:mikegagnon@gmail.com)
+* [File an issue](https://github.com/mikegagnon/sidenote/issues) on Github
+* Send me pull requests!
+
+### Apache License, Version 2.0
 
 Copyright 2013 Michael N. Gagnon
 
