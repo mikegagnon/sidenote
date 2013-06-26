@@ -1,0 +1,94 @@
+body {
+  overflow:hidden; /* This will remove the default scroll, not really needed, safer nonetheless */
+}
+html {
+  font-size: 20px;
+  -webkit-text-size-adjust: 20px;
+      -ms-text-size-adjust: 20px;
+  font-family: Georgia, Times, serif;
+  line-height: 1.2em;
+  color:#333;
+  background:#fff;
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 0px;
+
+}
+h1 {
+  font-family: Georgia, Times, serif;
+  font-size: 52px;
+  text-shadow: 3px 3px 4px lightgray;
+  line-height: 1.3em;
+  padding: 0px;
+  margin: 0px;
+}
+h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+h4 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+h5 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+}
+code {
+  font-size: 80%;
+}
+a[href^="http://"]{
+  color: red;
+  text-decoration: underline;
+}
+a[href^="javascript:"]{
+  color: blue;
+  text-decoration: none;
+}
+A:hover {text-decoration: underline}
+.headerbox {
+  margin: 0px;
+}
+.content-storage {
+  display:none;
+}
+#column-container {
+  margin: 0px;
+}
+.addRemoveColumn {
+  float:right;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #fffff2;
+  border: 1px solid;
+  border-color: #aaa;
+}
+.column {
+  background: #fffff2;
+  position:absolute;
+  left: 0px;
+  overflow:auto;
+  border: 1px solid;
+  border-color: #aaa;
+  margin: 10px;
+  padding: 20px;
+  float: left;
+}
+#breadcrumbs {
+  margin: 0px;
+}

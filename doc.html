@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-1.10.1.js"></script>
+    <script src="js/d3.v3.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/sidenote.js"></script>
+  </head>
+  <body>
+    <div class="headerbox">
+<h1><img src="img/logo.png" class="logo"> Sidenote</h1>
+    </div>
+    <div class="addRemoveColumn">
+      <a href="javascript:Sidenote.more()">more</a> /
+      <a href="javascript:Sidenote.less()">less</a>
+    </div>
+    <div id="breadcrumbs"></div>
+    <div id='column-container'>
+      <div class='column' id="column0"></div>
+    </div>
+    <div class="content-storage">
+<div id='as_if_for_paper'>
+<h2>Today's documents are still written as if for paper</h2>
+<p>If a document can just as easily be read in PDF format, then it was written as if for paper.
+I believe this describes the vast majority of documents in the world today.</p>
+<p>Sure hyperlinks allow you to easily reference other documents &mdash; but that doesn't greatly improve the readability of individual documents.</p>
+</div>
+
+<div id='markdown'>
+<h2>Markdown</h2>
+<p><a href="http://daringfireball.net/projects/markdown/">Summary</a> of markdown here.</p>
+</div>
+
+<div id='usecases'>
+<h3>Potential use cases</h3>
+<ul>
+<li>Technical documentation (like this document)<ul>
+<li>Scientific articles</li>
+<li>Technical reports</li>
+</ul>
+</li>
+<li>Text books</li>
+<li>Note taking</li>
+<li>Persuasive arguments</li>
+<li>Rigorously dissect political debates</li>
+<li>Mathematical proofs</li>
+<li>Mind maps</li>
+<li>Poetry</li>
+<li>Text-based adventure games</li>
+<li>Wikis, which would make all the above collaborative</li>
+</ul>
+</div>
+
+<div id='download'>
+<h2>Download Sidenote</h2>
+<p>Github link coming soon</p>
+</div>
+
+<div id='todo'>
+<h2>Todo list</h2>
+<ul>
+<li>More than two columns</li>
+<li>Automatically recompile document when any <tt>.md</tt> file is saved</li>
+<li>Tree navigation on left side</li>
+<li>Detect more errors when compiling documents (e.g. deadlinks)</li>
+<li>Save error messages in html</li>
+<li>Turn off sliding when first arrive on a page</li>
+<li>Remember the scroll state for each column that is out of view</li>
+<li>In the hashlink, record the index of the left-most column</li>
+<li>Link every word to a dictionary / wikipedia / DuckDuckGo lookup</li>
+<li>Automatically scroll to top when opening new column (any tips?)</li>
+<li><a href="javascript:Sidenote.openColumn('#todo','#todo_browsers','Test%20in%20common%20browsers')">Test in common browsers</a></li>
+<li>Perhaps use namespaces for columnIds?</li>
+<li>Ensure this document adheres to the <a href="javascript:Sidenote.openColumn('#todo','#styleguide','Style%20Guide')">Style Guide</a>.</li>
+<li>When you clink on a link, highlight it with a glowing color, so you can easily remember where you came from in the previous column (like a bookmark).</li>
+</ul>
+</div>
+
+<div id='how'>
+<h3>How does Sidenote accomplish it's goal?</h3>
+<ul>
+<li>The <a href="javascript:Sidenote.openColumn('#how','#left_column','left%20column')">left column</a> presents highly summarized information.</li>
+<li>The <strong>right column</strong> contains detailed information.</li>
+<li>Sidenote avoids <a href="javascript:Sidenote.openColumn('#how','#context_switch','context%20switches')">context switches</a> in the reader's brain since both columns are always visible.</li>
+<li>A large font-size combined with a relatively slim column forces brevity upon the writer.</li>
+<li>Sidenote documents follow the <a href="javascript:Sidenote.openColumn('#how','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a></li>
+</ul>
+</div>
+
+<div id='other_md_file'>
+<h2>Other <tt>.md</tt> files</h2>
+<p>Create as many other Markdown files as you like.</p>
+<p>The directory structure doesn't matter to the compiler, so organize your files as you see fit.</p>
+</div>
+
+<div id='header_file'>
+<h2><tt>header.md</tt></h2>
+<p>Every Sidenote-document directory must contain a <tt>header.md</tt> file. This file contains the content that goes at the top of the Sidenote document, and is always visible.</p>
+<p>For example, this is the <tt>header.md</tt> file for this document:</p>
+<pre><code>![Sidenote logo](img/logo.png) Sidenote
+=======================================
+</code></pre>
+</div>
+
+<div id='opensource'>
+<h2>Github</h2>
+<p>Less than 200 lines of Python code, along with some simple HTML and Javascript.</p>
+<h2>Apache License, Version 2.0</h2>
+<p>Copyright 2013 Michael N. Gagnon</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</div>
+
+<div id='main'>
+<p><em>Sidenote</em> presents a new way of reading and writing documents.</p>
+<p><a href="javascript:Sidenote.openColumn('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes skimming documents a breeze.</p>
+<p><a href="javascript:Sidenote.openColumn('#main','#creatingdocs','Creating%20documents%20with%20Sidenote')">Creating documents with Sidenote</a> is simple, if you are familiar with Markdown and using command-line tools.</p>
+<p>I have a small <a href="javascript:Sidenote.openColumn('#main','#todo','todo%20list')">todo list</a>.</p>
+<p>Sidenote is <a href="javascript:Sidenote.openColumn('#main','#opensource','open%20source')">open source</a>.</p>
+</div>
+
+<div id='foo'>
+<p>sdf</p>
+</div>
+
+<div id='todo_browsers'>
+<h3>Test in other browsers</h3>
+<p>So far I've only tested in Chrome on my laptop</p>
+</div>
+
+<div id='left_column'>
+<p>The left column should be optimized for skimming, because that is how most documents are read in today's information overloaded Web.</p>
+<p><a href="javascript:Sidenote.openColumn('#left_column','#foo','Foo')">Foo</a></p>
+</div>
+
+<div id='sidenote_link'>
+<h2>Sidenote-link syntax</h2>
+<p>Example:</p>
+<pre><code>    [Link text](##link_destination)
+</code></pre>
+<p>Sidenote adds one single addition to <a href="javascript:Sidenote.openColumn('#sidenote_link','#markdown','Markdown')">Markdown</a> syntax: <em>Sidenote links</em>.</p>
+<p>A Sidenote link is a link from one column to another column.</p>
+<p>In Markdown, a Sidenote link looks <em>almost</em> like a regular Markdown link. The only difference is that you use two <strong>#</strong> symbols instead of one.</p>
+<p>The <tt>link_destination</tt> specifies the name of <tt>.md</tt> Markdown file you want to link to (leave off the <tt>.md</tt> extension).</p>
+</div>
+
+<div id='creatingdocs'>
+<h2>Creating documents with Sidenote is simple</h2>
+<ol>
+<li><a href="javascript:Sidenote.openColumn('#creatingdocs','#download','Download%20Sidenote')">Download Sidenote</a> with <tt>git clone</tt>.</li>
+<li><a href="javascript:Sidenote.openColumn('#creatingdocs','#createdir','Create%20a%20new%20directory')">Create a new directory</a> to hold your <tt>.md</tt> files.</li>
+<li>Create a <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#header_file','header.md')">header.md</a></tt> file.</li>
+<li>Create a <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#main_file','main.md')">main.md</a></tt>  file.</li>
+<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> when authoring <tt>.md</tt> files.</li>
+<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_link','Sidenote-link%20syntax')">Sidenote-link syntax</a> to link to a column.</li>
+<li>Create <a href="javascript:Sidenote.openColumn('#creatingdocs','#other_md_file','other')">other</a> <tt>.md</tt> Markdown files.</li>
+<li>Use <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#compile','sidenote.py')">sidenote.py</a></tt> to compile your directory of <tt>.md</tt> files into a single html file.</li>
+</ol>
+<p>Use the <a href="javascript:Sidenote.openColumn('#creatingdocs','#styleguide','Style%20Guide')">Style Guide</a> when writing Sidenote documents.</p>
+</div>
+
+<div id='writingdocs'>
+<h2>Writing Sidenote documents is easy</h2>
+<p>Every column goes in its own <tt>.md</tt> Markdown file (see <a href="http://daringfireball.net/projects/markdown/">daringfireball.net/...</a>).</p>
+<ol>
+<li>
+<p>Create a new directory, say <tt>doc</tt>.
+   Here is the contents of the <tt>doc</tt> directory used to build this document:</p>
+<pre><code>header.md
+main.md
+license.md
+opensource.md
+todo.md
+why.md
+writingdocs.md
+</code></pre>
+</li>
+<li>
+<p>There must be a file named <tt>header.md</tt> and a file named <tt>main.md</tt></p>
+<ul>
+<li>These files contain the header content and the left-column content, respectively.</li>
+</ul>
+</li>
+<li>The other <tt>.md</tt> files contain right-column content.</li>
+<li>To link to a column, say <tt>opensource.md</tt>,  do:</li>
+</ol>
+<blockquote>
+<p><tt>&#91;Open source](&#35;&#35;opensource)</tt></p>
+</blockquote>
+<ol>
+<li>Then compile using <tt><a href="javascript:Sidenote.openColumn('#writingdocs','#commandline','sidenote.py')">sidenote.py</a></tt></li>
+</ol>
+</div>
+
+<div id='context_switch'>
+<h3>Context switches</h3>
+<p>Using typical web pages, the reader experiences a <strong>context switch</strong> whenver she clicks a link.
+She must switch from the <em>context of the previous page</em>, to the <em>context of the new page</em>.
+Such switches are taxing on the brain.</p>
+<p>In a well-written Sidenote document, however, links don't cause context switches.
+The <strong>previous column</strong> is always visible on the left, and the <strong>new column</strong> appears along side of it.
+Both columns have equal focus.</p>
+<p>This is a crucial feature because the reader can <strong>confidentially explore columns</strong>, without worrying if the new column will be worth the click.</p>
+</div>
+
+<div id='viz_mantra'>
+<h2>Visual Information Seeking Mantra</h2>
+<p>Sidenote documents should:</p>
+<ol>
+<li>Give a complete overview first.</li>
+<li>Give increasingly specific overviews, as the reader requests them.</li>
+<li>Only give details when the reader requests them.</li>
+</ol>
+<p>This philosophy comes directly from Ben Shneiderman's
+<a href="http://www.infovis-wiki.net/index.php/Visual_Information-Seeking_Mantra">Visual Information Seeking Mantra</a>:</p>
+<blockquote>
+<p>"<em>Overview first, zoom and filter, then details-on-demand.</em>"</p>
+</blockquote>
+</div>
+
+<div id='why'>
+<h2>Why use Sidenote?</h2>
+<h3>The problem</h3>
+<p>Despite Web technology, most documents are still written <a href="javascript:Sidenote.openColumn('#why','#as_if_for_paper','as%20if%20for%20paper')">as if for paper</a>.</p>
+<h3>Goal</h3>
+<p>Make information-rich documents easily digestible.</p>
+<p><a href="javascript:Sidenote.openColumn('#why','#how','Sidenote\'s%20feature%20set')">Sidenote's feature set</a> supports its goal.</p>
+<p>I forsee many <a href="javascript:Sidenote.openColumn('#why','#usecases','potential%20use%20cases')">potential use cases</a>.</p>
+</div>
+
+<div id='createdir'>
+<h2>Create a directory to hold your Markdown files</h2>
+<p><img src="img/sample_directory.png" style="float: right"></p>
+<p>The <tt><a href="javascript:Sidenote.openColumn('#createdir','#compile','sidenote.py')">sidenote.py</a></tt> compiler works by searching a directory (and its subdirectories) for <tt>.md</tt> <a href="javascript:Sidenote.openColumn('#createdir','#markdown','Markdown')">Markdown</a> files.
+The compiler combines all these files into a single html file.</p>
+<p>The figure on the right shows the directory that holds the Markdown files used to create this Sidenote document:</p>
+</div>
+
+<div id='styleguide'>
+<h2>Style Guide for Sidenote documents</h2>
+<p>100% tentative. Feedback welcome!</p>
+<ol>
+<li>Help the reader skim your document.</li>
+<li>Be terse.</li>
+<li>Follow the <a href="javascript:Sidenote.openColumn('#styleguide','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a>.</li>
+<li>Link text should typically summarize the column it links to, in one complete sentence.</li>
+<li>Paragraphs should only appear in the right-most columns.</li>
+<li>Paragraphs should typically include one or two bold or italicized words, that help the reader skim.</li>
+</ol>
+</div>
+
+<div id='main_file'>
+<h2><tt>main.md</tt></h2>
+<p>Every Sidenote-document directory must contain a <tt>main.md</tt> file. This file contains the "Top" column. This column is the first column and represents the root of the document.</p>
+<p>For example, this is the <tt>main.md</tt> file for this document:</p>
+<pre><code>*Sidenote* presents a new way of reading
+and writing documents.
+
+[Why use Sidenote?](##why) Sidenote makes
+skimming documents a breeze.
+
+[Creating documents with Sidenote](##creatingdocs)
+is simple, if you are familiar with Markdown
+and using command-line tools.
+
+I have a small [todo list](##todo).
+
+Sidenote is [open source](##opensource).
+</code></pre>
+</div>
+
+<div id='compile'>
+<h2>sidenote.py</h2>
+<p>Usage:</p>
+<pre><code>./sidenote.py doc/ &gt; doc.html
+</code></pre>
+<p>Where <tt>doc</tt> is the directory that contains all the <tt>.md</tt> files you want to compile together.</p>
+</div>
+    </div>
+  </body>
+</html>
+
