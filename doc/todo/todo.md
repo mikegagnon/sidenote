@@ -7,6 +7,7 @@ Todo list
 * Save error messages in html
 * Remember the scroll state for each column that is out of view
 * In the hashlink, record the number of visible columns
+* [Transitions should use CSS3](##usecss3)
 * Link every word to a dictionary / wikipedia / DuckDuckGo lookup
 * Automatically scroll to top when opening new column (any tips?)
 * [Test in common browsers](##todo_browsers)

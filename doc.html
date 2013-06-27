@@ -71,6 +71,7 @@ I believe this describes the vast majority of documents in the world today.</p>
 <li>Save error messages in html</li>
 <li>Remember the scroll state for each column that is out of view</li>
 <li>In the hashlink, record the number of visible columns</li>
+<li><a href="javascript:Sidenote.openColumn('#todo','#usecss3','Transitions%20should%20use%20CSS3')">Transitions should use CSS3</a></li>
 <li>Link every word to a dictionary / wikipedia / DuckDuckGo lookup</li>
 <li>Automatically scroll to top when opening new column (any tips?)</li>
 <li><a href="javascript:Sidenote.openColumn('#todo','#todo_browsers','Test%20in%20common%20browsers')">Test in common browsers</a></li>
@@ -169,6 +170,15 @@ limitations under the License.</p>
 <p>A Sidenote link is a link from one column to another column.</p>
 <p>In Markdown, a Sidenote link looks <em>almost</em> like a regular Markdown link. The only difference is that you use two <strong>#</strong> symbols instead of one.</p>
 <p>The <tt>link_destination</tt> specifies the name of <tt>.md</tt> Markdown file you want to link to (leave off the <tt>.md</tt> extension).</p>
+</div>
+
+<div id='usecss3'>
+<h2>Transitions should use CSS3</h2>
+<p>From <a href="https://github.com/rixth">rixth</a>:</p>
+<blockquote>
+<p>If CSS3 transitions are used for <a href="https://github.com/mikegagnon/sidenote/blob/b50d7ecc4efd868566d5e036a1d58d9ea592df50/js/sidenote.js#L216">animateSlide</a> they'll benefit from hardware acceleration, and the page weight will be considerably less as d3 will no longer be needed.</p>
+</blockquote>
+<p>See <a href="https://github.com/mikegagnon/sidenote/issues/1">Issue 1</a>.</p>
 </div>
 
 <div id='creatingdocs'>
