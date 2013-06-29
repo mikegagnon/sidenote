@@ -13,3 +13,5 @@ Todo list
 * [Test in common browsers](##todo_browsers)
 * Perhaps use namespaces for columnIds?
 * When you clink on a link, highlight it with a glowing color, so you can easily remember where you came from in the previous column (like a bookmark).
+* Add bootstrap.css
+* Click an image for a popover view that fits the screen.
