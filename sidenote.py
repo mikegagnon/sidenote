@@ -51,8 +51,8 @@ TEMPLATE_HTML = string.Template('''
 $headerbox
     </div>
     <div class="addRemoveColumn">
-      <a href="javascript:Sidenote.more()">more</a> /
-      <a href="javascript:Sidenote.less()">less</a>
+      <a href="javascript:Sidenote.more()">more columns</a> /
+      <a href="javascript:Sidenote.less()">fewer columns</a>
     </div>
     <div id="breadcrumbs"></div>
     <div id='column-container'>

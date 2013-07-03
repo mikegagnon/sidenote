@@ -26,7 +26,7 @@
 # $DIR is the absolute path for the directory containing this bash script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-OUTPUT_DIR=$1
+OUTPUT_DIR=`python -c "import os; print os.path.abspath(\"$1\")"`
 
 if [ -z $OUTPUT_DIR ]
   then
@@ -46,6 +46,7 @@ touch $OUTPUT_DIR/doc/header.md
 touch $OUTPUT_DIR/doc/main.md
 cp -r $DIR/css $OUTPUT_DIR
 cp -r $DIR/js $OUTPUT_DIR
+cp $DIR/.gitignore $OUTPUT_DIR
 
 # 
 echo "# Header goes here" > $OUTPUT_DIR/doc/header.md

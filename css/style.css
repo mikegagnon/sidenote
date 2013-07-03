@@ -2,11 +2,11 @@ body {
   overflow:hidden; /* This will remove the default scroll, not really needed, safer nonetheless */
 }
 html {
-  font-size: 20px;
+  font-size: 18px;
   -webkit-text-size-adjust: 20px;
       -ms-text-size-adjust: 20px;
   font-family: Georgia, Times, serif;
-  line-height: 1.2em;
+  line-height: 24px;
   color:#333;
   background:#fff;
   height: 100%;
@@ -22,7 +22,7 @@ body {
 h1 {
   font-family: Georgia, Times, serif;
   font-size: 52px;
-  text-shadow: 3px 3px 4px lightgray;
+  text-shadow: 2px 2px 5px #ccc;
   line-height: 1.3em;
   padding: 0px;
   margin: 0px;
@@ -55,16 +55,16 @@ a[href^="http://"]{
   text-decoration: underline;
 }
 a[href^="https://"]{
-  color: red;
+  color: #d44;
   text-decoration: underline;
 }
 a[href^="javascript:"]{
-  color: blue;
+  color: #44d;
   text-decoration: none;
 }
 A:hover {text-decoration: underline}
 .headerbox {
-  margin: 0px;
+  margin: 0px 0px 10px 0px;
 }
 .content-storage {
   display:none;
@@ -81,9 +81,10 @@ A:hover {text-decoration: underline}
   background-color: #fffff2;
   border: 1px solid;
   border-color: #aaa;
+  box-shadow: 2px 2px 5px #888;
 }
 .column {
-  background: #fffff2;
+  background: #fffff4;
   position:absolute;
   left: 0px;
   overflow:auto;
@@ -92,7 +93,17 @@ A:hover {text-decoration: underline}
   margin: 10px;
   padding: 20px;
   float: left;
+  box-shadow: 3px 3px 6px #888;
 }
 #breadcrumbs {
-  margin: 0px;
+  margin: 0px 0px 10px 0px;
+}
+#breadcrumbs a {
+  font-weight:bold;
+  text-decoration: underline;
+  color: #00f;
+}
+#breadcrumbs b {
+  color: #888;
+  text-decoration: none;
 }

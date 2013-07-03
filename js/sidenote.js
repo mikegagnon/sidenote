@@ -101,6 +101,7 @@ var Sidenote = {
     return ($(window).height()
             - $(".headerbox").height()
             - $("#breadcrumbs").height()
+            - 20 // header and breadcrumb margins
             - ((Sidenote.columnMargin + Sidenote.columnPadding)* 2))
   },
 
@@ -630,7 +631,8 @@ var Sidenote = {
 }
 
 window.onload = function() {
-
+  $( 'a[href^="http://"]' ).attr( 'target','_blank' )
+  $( 'a[href^="https://"]' ).attr( 'target','_blank' )
   Sidenote.loadStateFromUrl()
   Sidenote.setBreadcrumbs()
   $(window).resize(Sidenote.resizeColumns)
