@@ -1,2 +1,2 @@
-<img src="img/logo.png" class="logo"> Sidenote
+<img src="img/logo.png" class="logo"> Sidenote.io
 ===============================================
