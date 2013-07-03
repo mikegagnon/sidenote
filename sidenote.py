@@ -80,7 +80,9 @@ def toMarkdown(source, line):
   column.
   '''
 
-  if line.startswith("    "):
+  # TODO: better code block detection
+  # no translation of this line is part of a code block
+  if re.match("^    [^\d\-*]", line) != None:
     return line
 
   def sidenoteLinkToMarkdown(match):

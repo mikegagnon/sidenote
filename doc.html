@@ -54,6 +54,15 @@ I believe this describes the vast majority of documents in the world today.</p>
 </ul>
 </div>
 
+<div id='sidenote_sh'>
+<h2><tt>sidenote.sh</tt></h2>
+<p>A script created by <a href="javascript:Sidenote.openColumn('#sidenote_sh','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>, which compiles a specific Sidenote document.</p>
+<p>Usage:</p>
+<pre><code>./sidenote.sh
+</code></pre>
+<p>Executes your local copy of <tt><a href="javascript:Sidenote.openColumn('#sidenote_sh','#compile','sidenote.py')">sidenote.py</a></tt> to compile the Sidenote document.</p>
+</div>
+
 <div id='download'>
 <h2>Download Sidenote</h2>
 <p>On the command line:</p>
@@ -141,6 +150,23 @@ See the License for the specific language governing permissions and
 limitations under the License.</p>
 </div>
 
+<div id='mknote'>
+<h2><tt>mknote.sh</tt></h2>
+<p>Creates a new, minimal Sidenote document.</p>
+<p>Usage:</p>
+<pre><code>./mknote.sh new_directory_name
+</code></pre>
+<p>Where <tt>new_directory_name</tt> is the name of a new directory that <tt>mknote.sh</tt> will create.</p>
+<h3><tt>mknote.sh</tt> does the following:</h3>
+<ol>
+<li>Creates <tt>new_directory_name</tt> to hold your document's <tt>.md</tt> files.</li>
+<li>Creates a <a href="javascript:Sidenote.openColumn('#mknote','#sidenote_sh','&lt;tt&gt;sidenote.sh&lt;/tt&gt;')"><tt>sidenote.sh</tt></a> script, which you can use to compile this specific document.</li>
+<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumn('#mknote','#header_file','header.md')">header.md</a></tt> file.</li>
+<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumn('#mknote','#main_file','main.md')">main.md</a></tt> file.</li>
+<li>Copies necessary javascript files into <tt>new_directory_name</tt>.</li>
+</ol>
+</div>
+
 <div id='main'>
 <p><em>Sidenote</em> presents a new way of reading and writing documents.</p>
 <p><a href="javascript:Sidenote.openColumn('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes skimming documents a breeze.</p>
@@ -185,15 +211,19 @@ limitations under the License.</p>
 
 <div id='creatingdocs'>
 <h2>Creating documents with Sidenote is simple</h2>
+<p>The Sidenote compiler joins a group of <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
+<p>Steps to create a new Sidenote document:</p>
 <ol>
 <li><a href="javascript:Sidenote.openColumn('#creatingdocs','#download','Download%20Sidenote')">Download Sidenote</a> with <tt>git clone</tt>.</li>
-<li><a href="javascript:Sidenote.openColumn('#creatingdocs','#createdir','Create%20a%20new%20directory')">Create a new directory</a> to hold your <tt>.md</tt> files.</li>
-<li>Create a <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#header_file','header.md')">header.md</a></tt> file.</li>
-<li>Create a <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#main_file','main.md')">main.md</a></tt>  file.</li>
-<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> when authoring <tt>.md</tt> files.</li>
+<li>Run <a href="javascript:Sidenote.openColumn('#creatingdocs','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a> to create a new, minimal Sidenote document.</li>
+<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> to author <a href="javascript:Sidenote.openColumn('#creatingdocs','#other_md_file','as%20many%20&lt;tt&gt;.md&lt;/tt&gt;%20files%20as%20you%20like')">as many <tt>.md</tt> files as you like</a></li>
 <li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_link','Sidenote-link%20syntax')">Sidenote-link syntax</a> to link to a column.</li>
-<li>Create <a href="javascript:Sidenote.openColumn('#creatingdocs','#other_md_file','other')">other</a> <tt>.md</tt> Markdown files.</li>
-<li>Use <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#compile','sidenote.py')">sidenote.py</a></tt> to compile your directory of <tt>.md</tt> files into a single html file.</li>
+<li>There are two special <tt>.md</tt> files:<ol>
+<li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#header_file','&lt;tt&gt;header.md&lt;/tt&gt;')"><tt>header.md</tt></a></li>
+<li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#main_file','&lt;tt&gt;main.md&lt;/tt&gt;')"><tt>main.md</tt></a></li>
+</ol>
+</li>
+<li>Use <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_sh','sidenote.sh')">sidenote.sh</a></tt> to compile your directory of <tt>.md</tt> files into a single html file.</li>
 </ol>
 <p>Use the <a href="javascript:Sidenote.openColumn('#creatingdocs','#styleguide','Style%20Guide')">Style Guide</a> when writing Sidenote documents.</p>
 </div>
@@ -310,10 +340,11 @@ Sidenote is [open source](##opensource).
 
 <div id='compile'>
 <h2>sidenote.py</h2>
+<p>Joins a group of <a href="javascript:Sidenote.openColumn('#compile','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
 <p>Usage:</p>
 <pre><code>./sidenote.py doc/ &gt; doc.html
 </code></pre>
-<p>Where <tt>doc</tt> is the directory that contains all the <tt>.md</tt> files you want to compile together.</p>
+<p>Where <tt>doc</tt> is the directory (created by <a href="javascript:Sidenote.openColumn('#compile','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>) that contains all the <tt>.md</tt> files you want to compile together.</p>
 </div>
     </div>
   </body>
