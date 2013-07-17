@@ -71,6 +71,31 @@ I believe this describes the vast majority of documents in the world today.</p>
 <p>You can <a href="https://github.com/mikegagnon/sidenote">browse the source</a> on Github.</p>
 </div>
 
+<div id='tilde_anchor'>
+<h3>Tilde-anchor syntax</h3>
+<p>You can define several independent columns in the same Markdown file using <em>tilde-anchor</em> syntax.</p>
+<p>Example <tt>main.md</tt> that uses tilde anchors:</p>
+<pre><code>    # Main header
+    blah blah...
+    [link to column #2](##column2)
+    [link to column #3](##col3)
+
+    ~column2
+    # Column2 header
+    blah blah...
+
+    ~col3
+    # Column3 header
+    blah blah...
+</code></pre>
+<p>In this example, <tt>main.md</tt> defines three independent columns:</p>
+<ul>
+<li><tt>main<tt></li>
+<li><tt>column2<tt></li>
+<li><tt>col3<tt></li>
+</ul>
+</div>
+
 <div id='todo'>
 <h2>Todo list</h2>
 <ul>
@@ -214,6 +239,7 @@ limitations under the License.</p>
 <li>Run <a href="javascript:Sidenote.openColumn('#creatingdocs','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a> to create a new, minimal Sidenote document.</li>
 <li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> to author <a href="javascript:Sidenote.openColumn('#creatingdocs','#other_md_file','as%20many%20&lt;tt&gt;.md&lt;/tt&gt;%20files%20as%20you%20like')">as many <tt>.md</tt> files as you like</a></li>
 <li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_link','Sidenote-link%20syntax')">Sidenote-link syntax</a> to link to a column.</li>
+<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#tilde_anchor','Tilde-anchor%20syntax')">Tilde-anchor syntax</a> to define mulitple columns in the same Markdown file.</li>
 <li>There are two special <tt>.md</tt> files:<ol>
 <li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#header_file','&lt;tt&gt;header.md&lt;/tt&gt;')"><tt>header.md</tt></a></li>
 <li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#main_file','&lt;tt&gt;main.md&lt;/tt&gt;')"><tt>main.md</tt></a></li>
