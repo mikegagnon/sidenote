@@ -119,9 +119,13 @@ def rglob(directory):
 
   return matches
 
+def getBasename(filename):
+  return os.path.splitext(os.path.basename(filename))[0]
+
 def getMarkdownFilenames(directory):
   '''
-  returns (headerFilename, otherFiles)
+  returns a dict that maps the pageId to the filename that contains the markdown for that pageId.
+  This function does not perform 'tilde-expansion'.
   '''
 
   # list of markdown files
@@ -133,9 +137,6 @@ def getMarkdownFilenames(directory):
   elif len(headerfiles) > 1:
     raise ValueError("directory must contain one file named header.md, but " +
       "found several: %s" % headerfiles)
-  else:
-    headerfile = headerfiles[0]
-  files.remove(headerfile)
 
   mainfiles = filter(lambda f: os.path.basename(f) == "main.md", files)
   if len(mainfiles) == 0:
@@ -144,10 +145,24 @@ def getMarkdownFilenames(directory):
     raise ValueError("directory must contain one file named main.md, but " +
       "found several: %s" % mainfiles)
 
-  return (headerfile, files)
+  filenames = {}
+  for f in files:
+    pageId = getBasename(f)
+    if pageId in filenames:
+      raise ValueError("Filenames collide: %s and %s" % (f, filenames[pageId]))
+    filenames[pageId] = f 
 
-def getBasename(filename):
-  return os.path.splitext(os.path.basename(filename))[0]
+  return filenames
+
+#def loadColumns(directory):
+#  '''
+#  returns a dict that maps the pageId to the markdown content for that column.
+#  '''
+#  headerfile, files = getMarkdownFilenames(directory)
+#
+#  columns = {
+#    'header': headerfile,
+#  }
 
 def convertMarkdown(filename):
   with open(filename) as f:
@@ -157,13 +172,15 @@ def convertMarkdown(filename):
 
 def compileSidenote(directory):
 
-  headerfile, files = getMarkdownFilenames(directory)
+  filenames = getMarkdownFilenames(directory)
 
-  header = convertMarkdown(headerfile)
+  #headerfile, files = getMarkdownFilenames(directory)
 
+  header = convertMarkdown(filenames["header"])
+  del(filenames["header"])
+  
   contentColumns = {}
-  for filename in files:
-    basename = getBasename(filename)
+  for basename, filename in filenames.iteritems():
     if basename in contentColumns:
       raise ValueError("content column '%s' defined at least twice: %s and %s" %
         (basename, contentColumns[basename], filename))
