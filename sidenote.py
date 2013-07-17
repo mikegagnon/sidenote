@@ -66,7 +66,9 @@ $content_storage
 ''')
 
 # Example match: [Bar](##bar)
-sidenoteLinkParser = re.compile(r'\[(?P<linktext>[^\]]*)\]\(##(?P<identifier>[^)]*)\)')
+SIDENOTE_LINK_PARSER = re.compile(r'\[(?P<linktext>[^\]]*)\]\(##(?P<identifier>[^)]*)\)')
+
+TILDE_ANCHOR_PARSER = re.compile(r'^~(?P<identifier>[^\s]*)')
 
 def escapeQuotes(s):
   replaceSingeQuotes = re.sub("'", "\\'", s)
@@ -93,7 +95,7 @@ def toMarkdown(source, line):
        escapeQuotes(group["identifier"]),
        escapeQuotes(group["linktext"])))
 
-  return sidenoteLinkParser.sub(sidenoteLinkToMarkdown, line)
+  return SIDENOTE_LINK_PARSER.sub(sidenoteLinkToMarkdown, line)
 
 class SidenotePreprocessor(Preprocessor):
   def __init__(self, source):
@@ -154,40 +156,67 @@ def getMarkdownFilenames(directory):
 
   return filenames
 
-#def loadColumns(directory):
-#  '''
-#  returns a dict that maps the pageId to the markdown content for that column.
-#  '''
-#  headerfile, files = getMarkdownFilenames(directory)
-#
-#  columns = {
-#    'header': headerfile,
-#  }
+def tildeExpand(pageId, filename):
+  '''
+  performs the 'tilde-expansion' operation on the specified file.
+  returns a dict that maps the pageId to the markdown content for that column, for each column contained in filename
+  '''
+  currentPageId = pageId
+  columns = {
+    currentPageId: []
+  }
 
-def convertMarkdown(filename):
   with open(filename) as f:
-    return markdown.markdown(f.read(),
-      output_format = "html5",
-      extensions=[SidenoteExtension(getBasename(filename))])
+    for line in f:
+      tilde_anchor = TILDE_ANCHOR_PARSER.match(line)
+      if tilde_anchor == None:
+        columns[currentPageId].append(line)
+      else:
+        columns[currentPageId] = "".join(columns[currentPageId])
+        currentPageId = tilde_anchor.groupdict()["identifier"]
+        if len(currentPageId) == 0:
+          # TODO: better error message
+          raise ValueError("Found malformed tilde-anchor")
+        columns[currentPageId] = []
+
+  columns[currentPageId] = "".join(columns[currentPageId])
+
+  return columns
+
+def loadColumns(directory):
+  '''
+  returns a dict that maps the pageId to the markdown content for that column.
+  This function performs 'tilde-expansion'.
+  '''
+
+  columns = {}
+
+  for pageId, filename in getMarkdownFilenames(directory).iteritems():
+    for newPageId, columnContent in tildeExpand(pageId, filename).iteritems():
+      columns[newPageId] = columnContent
+
+  return columns
+
+def convertMarkdown(pageId, columnContent):
+  return markdown.markdown(columnContent,
+    output_format = "html5",
+    extensions=[SidenoteExtension(pageId)])
 
 def compileSidenote(directory):
 
-  filenames = getMarkdownFilenames(directory)
+  columns = loadColumns(directory)
 
-  #headerfile, files = getMarkdownFilenames(directory)
+  header = convertMarkdown("header", columns["header"])
+  del(columns["header"])
 
-  header = convertMarkdown(filenames["header"])
-  del(filenames["header"])
-  
-  contentColumns = {}
-  for basename, filename in filenames.iteritems():
-    if basename in contentColumns:
-      raise ValueError("content column '%s' defined at least twice: %s and %s" %
-        (basename, contentColumns[basename], filename))
-    contentColumns[basename] = convertMarkdown(filename)
+  convertedColumns = {}
+  for pageId, markdown in columns.iteritems():
+    if pageId in convertedColumns:
+      raise ValueError("content column '%s' defined at least twice:" % pageId)
+    convertedColumns[pageId] = convertMarkdown(pageId, markdown)
 
   content_storage = []
-  for identifier, html in contentColumns.iteritems():
+  for identifier, html in convertedColumns.iteritems():
     column = "<div id='%s'>\n%s\n</div>" % (identifier, html)
     content_storage.append(column)
 

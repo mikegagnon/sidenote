@@ -91,6 +91,10 @@ I believe this describes the vast majority of documents in the world today.</p>
 </ul>
 </div>
 
+<div id='foobill'>
+<p>asdf</p>
+</div>
+
 <div id='how'>
 <h3>How does Sidenote accomplish it's goal?</h3>
 <ul>
@@ -165,14 +169,6 @@ limitations under the License.</p>
 <li>Creates a minimal <tt><a href="javascript:Sidenote.openColumn('#mknote','#main_file','main.md')">main.md</a></tt> file.</li>
 <li>Copies necessary javascript files into <tt>new_directory_name</tt>.</li>
 </ol>
-</div>
-
-<div id='main'>
-<p><em>Sidenote</em> presents a new way of reading and writing documents.</p>
-<p><a href="javascript:Sidenote.openColumn('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes skimming documents a breeze.</p>
-<p><a href="javascript:Sidenote.openColumn('#main','#creatingdocs','Creating%20documents%20with%20Sidenote')">Creating documents with Sidenote</a> is simple, if you are familiar with Markdown and using command-line tools.</p>
-<p>I have a small <a href="javascript:Sidenote.openColumn('#main','#todo','todo%20list')">todo list</a>.</p>
-<p>Sidenote is <a href="javascript:Sidenote.openColumn('#main','#opensource','open%20source')">open source</a>.</p>
 </div>
 
 <div id='foo'>
@@ -261,6 +257,19 @@ writingdocs.md
 </ol>
 </div>
 
+<div id='styleguide'>
+<h2>Style Guide for Sidenote documents</h2>
+<p>100% tentative. Feedback welcome!</p>
+<ol>
+<li>Help the reader skim your document.</li>
+<li>Be terse.</li>
+<li>Follow the <a href="javascript:Sidenote.openColumn('#styleguide','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a>.</li>
+<li>Link text should typically summarize the column it links to, in one complete sentence.</li>
+<li>Paragraphs should only appear in the right-most columns.</li>
+<li>Paragraphs should typically include one or two bold or italicized words, that help the reader skim.</li>
+</ol>
+</div>
+
 <div id='context_switch'>
 <h3>Context switches</h3>
 <p>Using typical web pages, the reader experiences a <strong>context switch</strong> whenver she clicks a link.
@@ -305,17 +314,13 @@ The compiler combines all these files into a single html file.</p>
 <p>The figure on the right shows the directory that holds the Markdown files used to create this Sidenote document:</p>
 </div>
 
-<div id='styleguide'>
-<h2>Style Guide for Sidenote documents</h2>
-<p>100% tentative. Feedback welcome!</p>
-<ol>
-<li>Help the reader skim your document.</li>
-<li>Be terse.</li>
-<li>Follow the <a href="javascript:Sidenote.openColumn('#styleguide','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a>.</li>
-<li>Link text should typically summarize the column it links to, in one complete sentence.</li>
-<li>Paragraphs should only appear in the right-most columns.</li>
-<li>Paragraphs should typically include one or two bold or italicized words, that help the reader skim.</li>
-</ol>
+<div id='main'>
+<p><em>Sidenote</em> presents a new way of reading and writing documents.</p>
+<p><a href="javascript:Sidenote.openColumn('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes skimming documents a breeze.</p>
+<p><a href="javascript:Sidenote.openColumn('#main','#creatingdocs','Creating%20documents%20with%20Sidenote')">Creating documents with Sidenote</a> is simple, if you are familiar with Markdown and using command-line tools.</p>
+<p>I have a small <a href="javascript:Sidenote.openColumn('#main','#todo','todo%20list')">todo list</a>.</p>
+<p>Sidenote is <a href="javascript:Sidenote.openColumn('#main','#opensource','open%20source')">open source</a>.</p>
+<p><a href="javascript:Sidenote.openColumn('#main','#foobill','Foo')">Foo</a></p>
 </div>
 
 <div id='main_file'>

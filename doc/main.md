@@ -8,4 +8,8 @@ I have a small [todo list](##todo).
 
 Sidenote is [open source](##opensource).
 
+[Foo](##foobill)
 
+~foobill
+
+asdf
