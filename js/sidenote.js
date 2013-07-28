@@ -148,7 +148,9 @@ var Sidenote = {
       })
       .join("#")
 
-    hashtag = Sidenote.left_column_index + "#" + hashtag
+    hashtag = (Sidenote.left_column_index
+               + "#" + Sidenote.num_visible_columns
+               + "#" + hashtag)
 
     document.location.hash = hashtag
 
@@ -492,7 +494,7 @@ var Sidenote = {
     var hashtag = document.URL.substr(firstHashIndex + 1)
     var columns = hashtag.split("#")
 
-    if (columns.length < 2) {
+    if (columns.length < 3) {
       Sidenote.loadDefaultView()
       return
     }
@@ -503,8 +505,16 @@ var Sidenote = {
       return
     }
 
+    var num_visible_columns = parseInt(columns[1])
+    if (isNaN(num_visible_columns)) {
+      Sidenote.loadDefaultView()
+      return
+    }
+    Sidenote.num_visible_columns = num_visible_columns
+
     var nav_stack = _(columns)
-      .tail()
+      // drop the first two elements in columns
+      .tail(2)
       .map(function(column) {
         var parts = column.split(":")
         if (parts.length != 2) {
