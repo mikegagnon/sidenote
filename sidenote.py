@@ -40,6 +40,7 @@ TEMPLATE_HTML = string.Template('''
 <meta charset="utf-8">
 <html>
   <head>
+    $html_head
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-1.10.1.js"></script>
     <script src="js/d3.v3.js"></script>
@@ -206,6 +207,12 @@ def compileSidenote(directory):
 
   columns = loadColumns(directory)
 
+  if "html_head" in columns:
+    html_head = columns["html_head"]
+    del(columns["html_head"])
+  else:
+    html_head = ""
+
   header = convertMarkdown("header", columns["header"])
   del(columns["header"])
 
@@ -223,6 +230,7 @@ def compileSidenote(directory):
   content_storage_str = "\n\n".join(content_storage)
 
   template_dict = {
+    "html_head": html_head,
     "headerbox": header,
     "content_storage": content_storage_str
   }
