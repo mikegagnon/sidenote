@@ -18,16 +18,25 @@
 # markdown and people can share links better.
 
 
-
 # Requirements:
+#   markdown and smartypants
+#
+# Markdown:
 #   pip install markdown
 #   --or--
 #   easy_install markdown
 # See http://pythonhosted.org/Markdown/install.html
 #
+# Smartypants:
+#   easy_install smartypants
+# https://pypi.python.org/pypi/smartypants
+#
+
 import markdown
 from markdown.preprocessors import Preprocessor
 from markdown.extensions import Extension
+
+import smartypants
 
 import argparse
 import glob
@@ -199,9 +208,11 @@ def loadColumns(directory):
   return columns
 
 def convertMarkdown(pageId, columnContent):
-  return markdown.markdown(columnContent,
+  md = markdown.markdown(columnContent,
     output_format = "html5",
     extensions=[SidenoteExtension(pageId)])
+
+  return smartypants.smartyPants(md)
 
 def compileSidenote(directory):
 
