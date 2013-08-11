@@ -51,7 +51,7 @@ code {
   font-size: 80%;
 }
 a[href^="http://"]{
-  color: red;
+  color: #d44;
   text-decoration: underline;
 }
 a[href^="https://"]{
