@@ -23,8 +23,14 @@ var Sidenote = {
   animationDuration: 600,
 
   // Copied from style.cs
-  columnMargin: 10,
-  columnPadding: 20,
+  columnMargin_top: 0,
+  columnMargin_bottom: 10,
+  columnMargin_left: 10,
+  columnMargin_right: 0,
+  columnPadding_top: 0,
+  columnPadding_bottom: 0,
+  columnPadding_left: 15,
+  columnPadding_right: 15,
 
   /**
    * nav_stack contains the pageIds for every column in the navigation stack.
@@ -90,8 +96,10 @@ var Sidenote = {
 
   // the width of a single column, in pixels
   columnWidth: function() {
-    var whitespace = ((Sidenote.columnMargin + Sidenote.columnPadding)
-                      * 2
+    var whitespace = ((Sidenote.columnMargin_left
+                       + Sidenote.columnMargin_right
+                       + Sidenote.columnPadding_left
+                       + Sidenote.columnPadding_right)
                       * Sidenote.num_visible_columns)
     return ($(window).width() - whitespace) / Sidenote.num_visible_columns
   },
@@ -102,12 +110,18 @@ var Sidenote = {
             - $(".headerbox").height()
             - $("#breadcrumbs").height()
             - 20 // header and breadcrumb margins
-            - ((Sidenote.columnMargin + Sidenote.columnPadding)* 2))
+            - Sidenote.columnMargin_top
+            - Sidenote.columnMargin_bottom
+            - Sidenote.columnPadding_top
+            - Sidenote.columnPadding_bottom)
   },
 
   // returns the left position (in pixels) for a specific columnLocation
   columnLeftPosition: function(columnLocation, columnWidth) {
-    var whiteSpace = (Sidenote.columnMargin + Sidenote.columnPadding) * 2
+    var whiteSpace = Sidenote.columnMargin_left
+                     + Sidenote.columnMargin_right
+                     + Sidenote.columnPadding_left
+                     + Sidenote.columnPadding_right
     return columnLocation * (columnWidth + whiteSpace)
   },
 

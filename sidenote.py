@@ -50,6 +50,7 @@ TEMPLATE_HTML = string.Template('''
 <html>
   <head>
     $html_head
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-1.10.1.js"></script>
     <script src="js/d3.v3.js"></script>
@@ -57,12 +58,12 @@ TEMPLATE_HTML = string.Template('''
     <script src="js/sidenote.js"></script>
   </head>
   <body>
+    <div class="btn-group addRemoveColumn">
+      <button class="btn"><a href="javascript:Sidenote.more()">more columns</a></button>
+      <button class="btn"><a href="javascript:Sidenote.less()">fewer columns</a></button>
+    </div>
     <div class="headerbox">
 $headerbox
-    </div>
-    <div class="addRemoveColumn">
-      <a href="javascript:Sidenote.more()">more columns</a> /
-      <a href="javascript:Sidenote.less()">fewer columns</a>
     </div>
     <div id="breadcrumbs"></div>
     <div id='column-container'>
