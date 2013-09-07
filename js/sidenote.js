@@ -196,23 +196,44 @@ var Sidenote = {
 
   },
 
+  hideArrow: function(arrowId) {
+    d3.selectAll(arrowId)
+      .transition()
+      .duration(Sidenote.animationDuration)
+      // TODO: does this work for older IE explorers?
+      .style("opacity", 0)
+      .each("end", function(){
+        $(arrowId).addClass("hide-arrow")
+      })
+  },
+
+  showArrow: function(arrowId) {
+    $(arrowId).removeClass("hide-arrow")      
+    $(arrowId).css("opacity", 0.0)
+
+    d3.selectAll(arrowId)
+      .transition()
+      .duration(Sidenote.animationDuration)
+      .style("opacity", 0.5)
+  },
+
   showHideArrows: function() {
     if (Sidenote.left_column_index == 0) {
       if (!$("#left-arrow").hasClass("hide-arrow")) {
-        $("#left-arrow").addClass("hide-arrow")
+        Sidenote.hideArrow("#left-arrow")
       }
     } else if ($("#left-arrow").hasClass("hide-arrow")) {
-      $("#left-arrow").removeClass("hide-arrow")      
+      Sidenote.showArrow("#left-arrow")
     }
 
     // nav_stack[next_column_index] == the pageId for the column after the right-most visible column
     var next_column_index = Sidenote.left_column_index + Sidenote.num_visible_columns
     if (next_column_index == Sidenote.nav_stack.length) {
       if (!$("#right-arrow").hasClass("hide-arrow")) {
-        $("#right-arrow").addClass("hide-arrow")
+        Sidenote.hideArrow("#right-arrow")
       }
     } else if ($("#right-arrow").hasClass("hide-arrow")) {
-      $("#right-arrow").removeClass("hide-arrow")      
+      Sidenote.showArrow("#right-arrow")
     }
   },
 
