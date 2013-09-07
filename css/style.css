@@ -27,7 +27,8 @@ h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1em;
   padding: 0px;
-  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: 15px;
 }
 h3 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
