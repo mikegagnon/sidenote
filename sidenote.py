@@ -67,8 +67,8 @@ $headerbox
     </div>
     <ul id="breadcrumbs" class="breadcrumb"></ul>
     <div id='column-container'>
-      <img id="left-arrow" src="img/left_arrow.png">
-      <img id="right-arrow" src="img/right_arrow.png">
+      <a href="javascript:Sidenote.goBack()"><img id="left-arrow" src="img/left_arrow.png"></a>
+      <a href="javascript:Sidenote.goForward()"><img id="right-arrow" src="img/right_arrow.png"></a>
       <div class='column' id="column0"></div>
     </div>
     <div class="content-storage">

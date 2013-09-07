@@ -196,6 +196,26 @@ var Sidenote = {
 
   },
 
+  showHideArrows: function() {
+    if (Sidenote.left_column_index == 0) {
+      if (!$("#left-arrow").hasClass("hide-arrow")) {
+        $("#left-arrow").addClass("hide-arrow")
+      }
+    } else if ($("#left-arrow").hasClass("hide-arrow")) {
+      $("#left-arrow").removeClass("hide-arrow")      
+    }
+
+    // nav_stack[next_column_index] == the pageId for the column after the right-most visible column
+    var next_column_index = Sidenote.left_column_index + Sidenote.num_visible_columns
+    if (next_column_index == Sidenote.nav_stack.length) {
+      if (!$("#right-arrow").hasClass("hide-arrow")) {
+        $("#right-arrow").addClass("hide-arrow")
+      }
+    } else if ($("#right-arrow").hasClass("hide-arrow")) {
+      $("#right-arrow").removeClass("hide-arrow")      
+    }
+  },
+
   setBreadcrumbs: function() {
 
     var columns = Sidenote.nonEmptyColumns()
@@ -221,6 +241,7 @@ var Sidenote = {
     $("#breadcrumbs").html(nav_html)
 
     Sidenote.setHash()
+    Sidenote.showHideArrows()
   },
 
   emptyColumnContent: function(columnId) {
@@ -456,6 +477,31 @@ var Sidenote = {
       .value()
 
     Sidenote.nav_stack.push(newPageId)
+  },
+
+  /**
+   * When the user clicks the left arrow
+   */
+  goBack: function() {
+    if (Sidenote.left_column_index > 0) {
+      var pageId = Sidenote.nav_stack[Sidenote.left_column_index - 1]
+      Sidenote.reopenColumn(pageId)
+      Sidenote.setBreadcrumbs()
+    }
+  },
+
+  /**
+   * When the user clicks the right arrow
+   */
+  goForward: function() {
+    // nav_stack[next_column_index] == the pageId for the column after the right-most visible column
+    var next_column_index = Sidenote.left_column_index + Sidenote.num_visible_columns
+
+    if (next_column_index < Sidenote.nav_stack.length) {
+      var pageId = Sidenote.nav_stack[next_column_index]
+      Sidenote.reopenColumn(pageId)
+      Sidenote.setBreadcrumbs()
+    }
   },
 
   /**

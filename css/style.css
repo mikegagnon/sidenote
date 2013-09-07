@@ -121,10 +121,13 @@ A:hover {text-decoration: underline}
   filter:alpha(opacity=50);
 }
 #left-arrow:hover {
-opacity:0.75;
-filter:alpha(opacity=75);
+  opacity:0.75;
+  filter:alpha(opacity=75);
 }
 #right-arrow:hover {
-opacity:0.75;
-filter:alpha(opacity=75);
+  opacity:0.75;
+  filter:alpha(opacity=75);
+}
+.hide-arrow {
+  display: none;
 }
