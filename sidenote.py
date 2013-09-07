@@ -65,8 +65,10 @@ TEMPLATE_HTML = string.Template('''
     <div class="headerbox">
 $headerbox
     </div>
-    <div id="breadcrumbs"></div>
+    <ul id="breadcrumbs" class="breadcrumb"></ul>
     <div id='column-container'>
+      <img style="float: left;" src="img/left_arrow.png">
+      <img style="float:right;" src="img/right_arrow.png">
       <div class='column' id="column0"></div>
     </div>
     <div class="content-storage">

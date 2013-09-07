@@ -82,13 +82,16 @@ A:hover {text-decoration: underline}
   margin-left: 10px;
   margin-right: 10px;
 }
+.column-border-right {
+  border-right: 2px solid;
+}
 .column {
   position:absolute;
   left: 0px;
   overflow:auto;
-  border-right: 2px solid;
+  /*border-right: 2px solid;*/
   border-color: #aa0;
-  margin-left: 10px;
+  margin-left: 0px;
   margin-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -99,14 +102,11 @@ A:hover {text-decoration: underline}
   padding-top: 5px;
   padding-left: 10px;
   border-bottom: 1px solid;
-  border-color: #ddd;
+  border-color: #aaa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+  margin-bottom: 0px;
 }
 #breadcrumbs a {
   font-weight:bold;
-  text-decoration: underline;
-  color: #00f;
-}
-#breadcrumbs b {
-  color: #888;
-  text-decoration: none;
 }

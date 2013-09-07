@@ -25,12 +25,14 @@ var Sidenote = {
   // Copied from style.cs
   columnMargin_top: 0,
   columnMargin_bottom: 10,
-  columnMargin_left: 10,
+  columnMargin_left: 0,
   columnMargin_right: 0,
   columnPadding_top: 0,
   columnPadding_bottom: 0,
   columnPadding_left: 15,
   columnPadding_right: 15,
+  arrow_width: 30,
+  columnBorderRightWidth: 2,
 
   /**
    * nav_stack contains the pageIds for every column in the navigation stack.
@@ -96,7 +98,9 @@ var Sidenote = {
 
   // the width of a single column, in pixels
   columnWidth: function() {
-    var whitespace = ((Sidenote.columnMargin_left
+    var whitespace = ((Sidenote.arrow_width * 2)
+                      +
+                      (Sidenote.columnMargin_left
                        + Sidenote.columnMargin_right
                        + Sidenote.columnPadding_left
                        + Sidenote.columnPadding_right)
@@ -122,7 +126,29 @@ var Sidenote = {
                      + Sidenote.columnMargin_right
                      + Sidenote.columnPadding_left
                      + Sidenote.columnPadding_right
-    return columnLocation * (columnWidth + whiteSpace)
+    var leftPosition = columnLocation * (columnWidth + whiteSpace)
+    if (columnLocation >= 0) {
+      leftPosition += Sidenote.arrow_width
+    } else {
+      leftPosition -= Sidenote.columnBorderRightWidth
+    }
+
+    if (columnLocation == Sidenote.num_visible_columns) {
+      leftPosition += Sidenote.arrow_width
+    }
+    return leftPosition
+  },
+
+  drawDividers: function(){
+    _(Sidenote.num_visible_columns + 1)
+      .times(function(columnLocation) {
+        var columnId = Sidenote.columnLocationToId(columnLocation)
+        if (columnLocation == Sidenote.num_visible_columns - 1) {
+          $(columnId).removeClass("column-border-right")
+        } else {
+          $(columnId).addClass("column-border-right")
+        }
+      })
   },
 
   resizeColumns: function(){
@@ -179,7 +205,7 @@ var Sidenote = {
       .map( function(columnId) {
         if (_(columns).contains(columnId)) {
           // do not linkify visible columns
-          return "<b>" + Sidenote.columnTitle[columnId] + "</b>"
+          return "<li class='active'>" + Sidenote.columnTitle[columnId] + "</li>"
         } else {
           return ('<a href="' +
             "javascript:Sidenote.openColumn('" +
@@ -189,8 +215,9 @@ var Sidenote = {
             Sidenote.columnTitle[columnId] + "</a>")
         }
       })
-      .join(" &#9654; ")
+      .join(" <span class='divider'>/</span> </li>")
 
+    nav_html += "</li>"
     $("#breadcrumbs").html(nav_html)
 
     Sidenote.setHash()
@@ -272,6 +299,8 @@ var Sidenote = {
   
     var num_columns = Sidenote.num_visible_columns
 
+    $(".column").addClass("column-border-right")
+
     /**
      * endPositions[columnId] == the left position of that column at the end
      * of the animation.
@@ -321,8 +350,8 @@ var Sidenote = {
             updateColumnLocationToIdFunc)
         }
 
+        Sidenote.drawDividers()
       })
-
   },
 
   /**
@@ -622,6 +651,8 @@ var Sidenote = {
     Sidenote.initializeColumns(Sidenote.nav_stack, left_column_index)
     Sidenote.setBreadcrumbs()
     Sidenote.resizeColumns()
+    Sidenote.drawDividers()
+
   },
 
   /**
@@ -650,6 +681,8 @@ var Sidenote = {
     Sidenote.initializeColumns(Sidenote.nav_stack, left_column_index)
     Sidenote.setBreadcrumbs()
     Sidenote.resizeColumns()
+    Sidenote.drawDividers()
+
   },
 
 }
@@ -661,4 +694,5 @@ window.onload = function() {
   Sidenote.setBreadcrumbs()
   $(window).resize(Sidenote.resizeColumns)
   Sidenote.resizeColumns()
+  Sidenote.drawDividers()
 }
