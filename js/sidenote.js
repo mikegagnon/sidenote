@@ -232,7 +232,8 @@ var Sidenote = {
       if (!$("#right-arrow").hasClass("hide-arrow")) {
         Sidenote.hideArrow("#right-arrow")
       }
-    } else if ($("#right-arrow").hasClass("hide-arrow")) {
+    } else if (Sidenote.nav_stack.length >= Sidenote.num_visible_columns
+               && $("#right-arrow").hasClass("hide-arrow")) {
       Sidenote.showArrow("#right-arrow")
     }
   },
