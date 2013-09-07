@@ -25,8 +25,9 @@ h1 {
 }
 h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-
+  line-height: 1em;
+  padding: 0px;
+  margin: 0px;
 }
 h3 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -111,7 +112,19 @@ A:hover {text-decoration: underline}
 }
 #left-arrow {
   float: left;
+  opacity:0.5;
+  filter:alpha(opacity=50);
 }
 #right-arrow {
   float: right;
+  opacity:0.5;
+  filter:alpha(opacity=50);
+}
+#left-arrow:hover {
+opacity:0.75;
+filter:alpha(opacity=75);
+}
+#right-arrow:hover {
+opacity:0.75;
+filter:alpha(opacity=75);
 }
