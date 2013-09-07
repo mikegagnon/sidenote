@@ -18,7 +18,7 @@ body {
 h1 {
   font-family: Georgia, Times, serif;
   font-size: 52px;
-  line-height: 1.3em;
+  line-height: 1em;
   padding: 0px;
   margin: 0px;
   color:#ffd200;
@@ -65,9 +65,13 @@ A:hover {text-decoration: underline}
 .headerbox {
   padding-left: 10px;
   background-color: #102955;
-  color: #fff;
+  color:rgba(255, 255,255, 0.5);
   box-shadow: 0px 3px 3px #999;
   text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+}
+.headerbox a {
+  color:rgba(128, 128, 255, 0.8);
+
 }
 .content-storage {
   display:none;
