@@ -106,7 +106,7 @@ def toMarkdown(source, line):
       (group["linktext"],
        escapeQuotes(source),
        escapeQuotes(group["identifier"]),
-       escapeQuotes(group["linktext"])))
+       escapeQuotes(smartypants.smartyPants(group["linktext"]))))
 
   return SIDENOTE_LINK_PARSER.sub(sidenoteLinkToMarkdown, line)
 
