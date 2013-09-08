@@ -238,6 +238,10 @@ var Sidenote = {
     }
   },
 
+  escapeQuote: function(s) {
+    return s.replace(/'/g, "\\'")
+  },
+
   setBreadcrumbs: function() {
 
     var columns = Sidenote.nonEmptyColumns()
@@ -251,9 +255,9 @@ var Sidenote = {
         } else {
           return ('<a href="' +
             "javascript:Sidenote.openColumn('" +
-            source + "','" +
-            columnId + "','" +
-            Sidenote.columnTitle[columnId] + "')" + '">' +
+            Sidenote.escapeQuote(source) + "','" +
+            Sidenote.escapeQuote(columnId) + "','" +
+            Sidenote.escapeQuote(Sidenote.columnTitle[columnId]) + "')" + '">' +
             Sidenote.columnTitle[columnId] + "</a>")
         }
       })
