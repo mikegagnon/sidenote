@@ -54,8 +54,8 @@ h1 {
   font-family: Georgia, Times, serif;
   font-size: 52px;
   line-height: 1em;
-  padding: 0px;
   margin: 0px;
+  padding: 9px 0px 0px 0px;
   color:#ffd200;
 }
 h2 {
