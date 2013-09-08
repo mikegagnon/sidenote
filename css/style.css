@@ -18,7 +18,7 @@ body {
   overflow:hidden; /* This will remove the default scroll, not really needed, safer nonetheless */
 }
 html {
-  font-size: 18px;
+  font-size: 20px;
   -webkit-text-size-adjust: 18;
       -ms-text-size-adjust: 18px;
   font-family: ScalaWebPro, Georgia, Times, serif;
@@ -38,6 +38,7 @@ i {
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
 }
+
 strong {
   font-family: Georgia, Times, serif;
   font-style: bold;
@@ -54,8 +55,8 @@ h1 {
   font-family: Georgia, Times, serif;
   font-size: 52px;
   line-height: 1em;
+  padding: 0px;
   margin: 0px;
-  padding: 9px 0px 0px 0px;
   color:#ffd200;
 }
 h2 {
@@ -103,7 +104,7 @@ a[href^="javascript:"]{
 }
 A:hover {text-decoration: underline}
 .headerbox {
-  padding: 0px 0px 0px 10px;
+  padding: 10px 0px 6px 10px;
   margin: 0px;
   background-color: #102955;
   color:rgba(255, 255,255, 0.5);
@@ -148,6 +149,7 @@ A:hover {text-decoration: underline}
   float: left;
 }
 #breadcrumbs {
+  font-size: 17px;
   padding: 10px 0px 5px 10px;
   margin: 0px;
   border-bottom: 1px solid;
