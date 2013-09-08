@@ -1,14 +1,17 @@
-/* IMPORTANT note: these Scala fonts are not for public use. Do not use these fonts in your own CSS */
+/**
+ * IMPORTANT note: these Scala fonts are not freely available, and are not included with the Sidenote.io 
+ * source code.
+ */ 
 
   /* first for Internet Explorer < 9 */
   @font-face {
     font-family: ScalaWebPro;
-    src: url("http://mikegagnon.com/fonts/ScalaWebPro.eot");
+    src: url("../fonts/ScalaWebPro.eot");
   }
   /* then for WOFF-capable browsers */
   @font-face {
     font-family: ScalaWebPro;
-    src: url("http://mikegagnon.com/fonts/ScalaWebPro.woff") format("woff");
+    src: url("../fonts/ScalaWebPro.woff") format("woff");
   }
 
 body {
