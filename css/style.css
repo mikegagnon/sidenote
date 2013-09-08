@@ -122,6 +122,9 @@ A:hover {text-decoration: underline}
   margin: 0px;
   padding-top: 10px;
 }
+#column-container li {
+  margin-bottom: 5px;
+}
 .addRemoveColumn {
   float:right;
   padding-left: 10px;
