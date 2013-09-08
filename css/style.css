@@ -30,8 +30,21 @@ html {
 p {
   margin-bottom: 24px;
 }
+em {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
 i {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+strong {
   font-family: Georgia, Times, serif;
+  font-style: bold;
+}
+b {
+  font-family: Georgia, Times, serif;
+  font-style: bold;
 }
 body {
   height: 100%;
