@@ -23,10 +23,14 @@ from markdown.extensions import Extension
 import smartypants
 
 import argparse
+import codecs
 import glob
 import os
 import re
 import string
+import sys
+
+ENCODING = "utf-8"
 
 TEMPLATE_HTML = string.Template('''
 <!DOCTYPE html>
@@ -163,7 +167,7 @@ def tildeExpand(pageId, filename):
     currentPageId: []
   }
 
-  with open(filename) as f:
+  with codecs.open(filename, encoding=ENCODING) as f:
     for line in f:
       tilde_anchor = TILDE_ANCHOR_PARSER.match(line)
       if tilde_anchor == None:
@@ -241,4 +245,5 @@ if __name__=="__main__":
                      help='directory containing Sidenote-Markdown files')
   args = parser.parse_args()
 
-  print compileSidenote(args.dir)
+  stdout = codecs.getwriter(ENCODING)(sys.stdout)
+  stdout.write(compileSidenote(args.dir) + "\n")

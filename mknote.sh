@@ -30,10 +30,12 @@ fi
 
 mkdir $OUTPUT_DIR
 mkdir $OUTPUT_DIR/doc
+mkdir $OUTPUT_DIR/img
 touch $OUTPUT_DIR/doc/header.md
 touch $OUTPUT_DIR/doc/main.md
 cp -r $DIR/css $OUTPUT_DIR
 cp -r $DIR/js $OUTPUT_DIR
+cp $DIR/img/*_arrow.png $OUTPUT_DIR/img
 cp $DIR/.gitignore $OUTPUT_DIR
 
 # 
