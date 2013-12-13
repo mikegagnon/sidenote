@@ -1,6 +1,8 @@
 Todo list
 ---------
 
+* Use [jQuery.twFile](http://jquery.tiddlywiki.org/twFile.html) to 
+  wikify Sidenote
 * Automatically recompile document when any <tt>.md</tt> file is saved
 * Tree navigation on left side
 * Detect more errors when compiling documents (e.g. deadlinks)
