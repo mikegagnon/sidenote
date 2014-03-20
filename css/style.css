@@ -18,17 +18,17 @@ body {
   overflow:hidden; /* This will remove the default scroll, not really needed, safer nonetheless */
 }
 html {
-  font-size: 20px;
-  -webkit-text-size-adjust: 18;
-      -ms-text-size-adjust: 18px;
+  font-size: 16px;
+  -webkit-text-size-adjust: 15;
+      -ms-text-size-adjust: 15px;
   font-family: ScalaWebPro, Georgia, Times, serif;
-  line-height: 24px;
+  line-height: 20px;
   color:#333;
   background:#fff;
   height: 100%;
 }
 p {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 em {
   font-family: "Times New Roman", Times, serif;
@@ -53,7 +53,7 @@ body {
 }
 h1 {
   font-family: Georgia, Times, serif;
-  font-size: 35px;
+  font-size: 25px;
   line-height: 1em;
   padding: 10px 0px 0px 0px;
   margin: 0px;
@@ -61,19 +61,19 @@ h1 {
 }
 h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
+  font-size: 22px;
   line-height: 1em;
   padding: 0px;
   margin-top: 0px;
   margin-bottom: 15px;
 }
 h3 {
-  font-size: 23px;
+  font-size: 20px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.3em;
 }
 h4 {
-  font-size: 19px;
+  font-size: 18px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.3em;
 }
