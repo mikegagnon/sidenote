@@ -68,16 +68,18 @@ $content_storage
 
 # Example match: [Bar](##bar)
 SIDENOTE_LINK_PARSER = re.compile(r'\[(?P<linktext>[^\]]*)\]\(##(?P<identifier>[^)]*)\)')
+LINK_PARSER = re.compile(r'(\[[^\]]*\]\([^)]*\))')
 
-TILDE_ANCHOR_PARSER = re.compile(r'^~(?P<identifier>[^\s]*)')
+TILDE_ANCHOR_PARSER = re.compile(r'^~.*$')
 
 def escapeQuotes(s):
   replaceSingeQuotes = re.sub("'", "\\'", s)
   return re.sub('"', '\\"', replaceSingeQuotes) 
 
-def toMarkdown(source, line):
+def toMarkdown(keywordRegex, keywordIndex, source, line):
   '''
-  Replaces all sidenote links with markdown links.
+  Replaces all keywords with sidenote links, then
+  replaces all sidenote links with markdown links.
   A sidenote link is a link like this: [Bar](##bar)
   It is replaced with a link (in markdown syntax) that opens up a sidenote
   column.
@@ -88,6 +90,21 @@ def toMarkdown(source, line):
   if re.match("^    [^\d\-*]", line) != None:
     return line
 
+  # transforms a keyword into a sidenote link
+  def keywordToSidenoteLink(match):
+    keyword  = match.group()
+    begin = end = ""
+    if re.match("\W", keyword[0]):
+      begin = keyword[0]
+      keyword = keyword[1:]
+    if re.match("\W", keyword[-1]):
+      end = keyword[-1]
+      keyword = keyword[:-1]
+    pageId = keywordIndex[keyword]
+    sys.stderr.write(str(match.group()) + "\n")
+    return "%s[%s](##%s)%s" % (begin, keyword, pageId, end)
+
+  # transforms a sidenote link into markdown
   def sidenoteLinkToMarkdown(match):
     group = match.groupdict()
     return ("[%s](javascript:Sidenote.openColumn\('#%s','#%s','%s'\))" %
@@ -96,19 +113,36 @@ def toMarkdown(source, line):
        escapeQuotes(group["identifier"]),
        escapeQuotes(smartypants.smartyPants(group["linktext"]))))
 
-  return SIDENOTE_LINK_PARSER.sub(sidenoteLinkToMarkdown, line)
+  newline = ""
+  # tokenize the line into links and non-links
+  for part in LINK_PARSER.split(line):
+
+    # first, try to translate this part into a sidenote link
+    newpart = SIDENOTE_LINK_PARSER.sub(sidenoteLinkToMarkdown, part)
+
+    # if that didn't do anything, then see if the part contains any keywords
+    if part == newpart and keywordRegex:
+      newpart = keywordRegex.sub(keywordToSidenoteLink, part)
+      newpart = SIDENOTE_LINK_PARSER.sub(sidenoteLinkToMarkdown, newpart)
+    newline += newpart
+
+  return newline
 
 class SidenotePreprocessor(Preprocessor):
-  def __init__(self, source):
+  def __init__(self, keywordRegex, keywordIndex, source):
+    self.keywordRegex = keywordRegex
+    self.keywordIndex = keywordIndex
     self.source = source
   def run(self, lines):
-    return [toMarkdown(self.source, line) for line in lines]
+    return [toMarkdown(self.keywordRegex, self.keywordIndex, self.source, line) for line in lines]
 
 class SidenoteExtension(Extension):
-  def __init__(self, source):
+  def __init__(self, keywordRegex, keywordIndex, source):
+    self.keywordRegex = keywordRegex
+    self.keywordIndex = keywordIndex
     self.source = source
   def extendMarkdown(self, md, md_globals):
-    md.preprocessors["SidenotePreprocessor"] = SidenotePreprocessor(self.source)
+    md.preprocessors["SidenotePreprocessor"] = SidenotePreprocessor(self.keywordRegex, self.keywordIndex, self.source)
 
 def rglob(directory):
   matches = set([])
@@ -157,7 +191,7 @@ def getMarkdownFilenames(directory):
 
   return filenames
 
-def tildeExpand(pageId, filename):
+def tildeExpand(keywordIndex, pageId, filename):
   '''
   performs the 'tilde-expansion' operation on the specified file.
   returns a dict that maps the pageId to the markdown content for that column, for each column contained in filename
@@ -174,7 +208,14 @@ def tildeExpand(pageId, filename):
         columns[currentPageId].append(line)
       else:
         columns[currentPageId] = "".join(columns[currentPageId])
-        currentPageId = tilde_anchor.groupdict()["identifier"]
+        parts = line.rstrip().split("~")[1:]
+        currentPageId = parts[0]
+        keywords = parts[1:]
+        for keyword in keywords:
+          if keyword in keywordIndex:
+            raise ValueError("The keyword '%s' is defined multiple times" % keyword)
+          else:
+            keywordIndex[keyword] = currentPageId
         if len(currentPageId) == 0:
           # TODO: better error message
           raise ValueError("Found malformed tilde-anchor")
@@ -186,28 +227,38 @@ def tildeExpand(pageId, filename):
 
 def loadColumns(directory):
   '''
-  returns a dict that maps the pageId to the markdown content for that column.
+  returns [keywordIndex, columns], where
+  keywordIndex is a dict that maps each keyword to its associated pageId
+  columns is a dict that maps the pageId to the markdown content for that column.
   This function performs 'tilde-expansion'.
   '''
 
   columns = {}
+  keywordIndex = {}
 
   for pageId, filename in getMarkdownFilenames(directory).iteritems():
-    for newPageId, columnContent in tildeExpand(pageId, filename).iteritems():
+    for newPageId, columnContent in tildeExpand(keywordIndex, pageId, filename).iteritems():
       columns[newPageId] = columnContent
 
-  return columns
+  return [keywordIndex, columns]
 
-def convertMarkdown(pageId, columnContent):
+def convertMarkdown(keywordRegex, keywordIndex, pageId, columnContent):
   md = markdown.markdown(columnContent,
     output_format = "html5",
-    extensions=[SidenoteExtension(pageId)])
+    extensions=[SidenoteExtension(keywordRegex, keywordIndex, pageId)])
 
   return smartypants.smartyPants(md)
 
 def compileSidenote(directory):
 
-  columns = loadColumns(directory)
+  keywordIndex, columns = loadColumns(directory)
+
+  keywords = keywordIndex.keys()
+  if len(keywords) > 0:
+    keywordRegexStr = "(\W" + "\W)|(\W".join(keywords) + "\W)"
+    keywordRegex = re.compile(keywordRegexStr) 
+  else:
+    keywordRegex = None
 
   if "html_head" in columns:
     html_head = columns["html_head"]
@@ -215,14 +266,14 @@ def compileSidenote(directory):
   else:
     html_head = ""
 
-  header = convertMarkdown("header", columns["header"])
+  header = convertMarkdown(keywordRegex, keywordIndex, "header", columns["header"])
   del(columns["header"])
 
   convertedColumns = {}
   for pageId, markdown in columns.iteritems():
     if pageId in convertedColumns:
       raise ValueError("content column '%s' defined at least twice:" % pageId)
-    convertedColumns[pageId] = convertMarkdown(pageId, markdown)
+    convertedColumns[pageId] = convertMarkdown(keywordRegex, keywordIndex, pageId, markdown)
 
   content_storage = []
   for identifier, html in convertedColumns.iteritems():

@@ -4,7 +4,7 @@
 
 [Creating documents with Sidenote](##creatingdocs) is simple, if you are familiar with Markdown and using command-line tools.
 
-Sidenote is unlicensed under the [public domain](##opensource).
+Sidenote is unlicensed under the public domain.
 
 ~ideas
 ## Ideas
