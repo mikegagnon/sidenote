@@ -101,7 +101,6 @@ def toMarkdown(keywordRegex, keywordIndex, source, line):
       end = keyword[-1]
       keyword = keyword[:-1]
     pageId = keywordIndex[keyword]
-    sys.stderr.write(str(match.group()) + "\n")
     return "%s[%s](##%s)%s" % (begin, keyword, pageId, end)
 
   # transforms a sidenote link into markdown
