@@ -242,7 +242,7 @@ var Sidenote = {
           return "<li class='active'>" + Sidenote.columnTitle[columnId] + "</li>"
         } else {
           return ('<a href="' +
-            "javascript:Sidenote.openColumn('" +
+            "javascript:Sidenote.openColumnLoud('" +
             Sidenote.escapeQuote(source) + "','" +
             Sidenote.escapeQuote(columnId) + "','" +
             Sidenote.escapeQuote(Sidenote.columnTitle[columnId]) + "')" + '">' +
@@ -517,6 +517,18 @@ var Sidenote = {
       Sidenote.setBreadcrumbs()
     }
   },
+
+  /**
+   * These "quiet" and "loud" functions exist only so that style.css can
+   * color HTML links to these functions differently
+   */
+  openColumnQuiet: function(fromPageId, toPageId, toText) {
+    Sidenote.openColumn(fromPageId, toPageId, toText)
+  },
+  openColumnLoud: function(fromPageId, toPageId, toText) {
+    Sidenote.openColumn(fromPageId, toPageId, toText)
+  },
+
 
   /**
    * Every time the user clicks a Sidenote link, this function is called to

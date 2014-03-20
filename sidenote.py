@@ -76,7 +76,7 @@ def escapeQuotes(s):
   replaceSingeQuotes = re.sub("'", "\\'", s)
   return re.sub('"', '\\"', replaceSingeQuotes) 
 
-def toMarkdown(keywordRegex, keywordIndex, source, line):
+def toMarkdown(observedKeywords, keywordRegex, keywordIndex, source, line):
   '''
   Replaces all keywords with sidenote links, then
   replaces all sidenote links with markdown links.
@@ -92,7 +92,7 @@ def toMarkdown(keywordRegex, keywordIndex, source, line):
 
   # transforms a keyword into a sidenote link
   def keywordToSidenoteLink(match):
-    keyword  = match.group()
+    keyword = match.group()
     begin = end = ""
     if re.match("\W", keyword[0]):
       begin = keyword[0]
@@ -101,12 +101,29 @@ def toMarkdown(keywordRegex, keywordIndex, source, line):
       end = keyword[-1]
       keyword = keyword[:-1]
     pageId = keywordIndex[keyword]
-    return "%s[%s](##%s)%s" % (begin, keyword, pageId, end)
+
+    if pageId == source:
+      return "%s%s%s" % (begin, keyword, end)
+
+    if keyword in observedKeywords:
+      loudness = "Quiet"
+    else:
+      loudness = "Loud"
+    observedKeywords.add(keyword)
+
+    return ("%s[%s](javascript:Sidenote.openColumn%s\('#%s','#%s','%s'\))%s" %
+      (begin,
+       keyword,
+       loudness,
+       escapeQuotes(source),
+       escapeQuotes(pageId),
+       escapeQuotes(smartypants.smartyPants(keyword)),
+       end))
 
   # transforms a sidenote link into markdown
   def sidenoteLinkToMarkdown(match):
     group = match.groupdict()
-    return ("[%s](javascript:Sidenote.openColumn\('#%s','#%s','%s'\))" %
+    return ("[%s](javascript:Sidenote.openColumnLoud\('#%s','#%s','%s'\))" %
       (group["linktext"],
        escapeQuotes(source),
        escapeQuotes(group["identifier"]),
@@ -133,7 +150,8 @@ class SidenotePreprocessor(Preprocessor):
     self.keywordIndex = keywordIndex
     self.source = source
   def run(self, lines):
-    return [toMarkdown(self.keywordRegex, self.keywordIndex, self.source, line) for line in lines]
+    observedKeywords = set()
+    return [toMarkdown(observedKeywords, self.keywordRegex, self.keywordIndex, self.source, line) for line in lines]
 
 class SidenoteExtension(Extension):
   def __init__(self, keywordRegex, keywordIndex, source):

@@ -98,9 +98,13 @@ a[href^="https://"]{
   color: #d44;
   text-decoration: underline;
 }
-a[href^="javascript:"]{
-  color: #44d;
+a[href^="javascript:Sidenote.openColumnQuiet"]{
+  color: #333;
   text-decoration: none;
+}
+a[href^="javascript:Sidenote.openColumnLoud"]{
+  color: #44d;
+  text-decoration: underline;
 }
 A:hover {text-decoration: underline}
 .headerbox {

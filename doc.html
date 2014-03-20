@@ -43,11 +43,11 @@ I believe this describes the vast majority of documents in the world today.</p>
 
 <div id='sidenote_sh'>
 <h2><tt>sidenote.sh</tt></h2>
-<p>A script created by <a href="javascript:Sidenote.openColumn('#sidenote_sh','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>, which compiles a specific Sidenote document.</p>
+<p>A script created by <a href="javascript:Sidenote.openColumnLoud('#sidenote_sh','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>, which compiles a specific Sidenote document.</p>
 <p>Usage:</p>
 <pre><code>./sidenote.sh
 </code></pre>
-<p>Executes your local copy of <tt><a href="javascript:Sidenote.openColumn('#sidenote_sh','#compile','sidenote.py')">sidenote.py</a></tt> to compile the Sidenote document.</p>
+<p>Executes your local copy of <tt><a href="javascript:Sidenote.openColumnLoud('#sidenote_sh','#compile','sidenote.py')">sidenote.py</a></tt> to compile the Sidenote document.</p>
 </div>
 
 <div id='download'>
@@ -94,10 +94,10 @@ I believe this describes the vast majority of documents in the world today.</p>
 <li>Save error messages in html</li>
 <li>Remember the scroll state for each column that is out of view</li>
 <li>In the hashlink, record the number of visible columns</li>
-<li><a href="javascript:Sidenote.openColumn('#todo','#usecss3','Transitions%20should%20use%20CSS3')">Transitions should use CSS3</a></li>
+<li><a href="javascript:Sidenote.openColumnLoud('#todo','#usecss3','Transitions%20should%20use%20CSS3')">Transitions should use CSS3</a></li>
 <li>Link every word to a dictionary / wikipedia / DuckDuckGo lookup</li>
 <li>Automatically scroll to top when opening new column (any tips?)</li>
-<li><a href="javascript:Sidenote.openColumn('#todo','#todo_browsers','Test%20in%20common%20browsers')">Test in common browsers</a></li>
+<li><a href="javascript:Sidenote.openColumnLoud('#todo','#todo_browsers','Test%20in%20common%20browsers')">Test in common browsers</a></li>
 <li>Perhaps use namespaces for columnIds?</li>
 <li>When you clink on a link, highlight it with a glowing color, so you can easily remember where you came from in the previous column (like a bookmark).</li>
 <li>Add bootstrap.css</li>
@@ -130,11 +130,11 @@ I believe this describes the vast majority of documents in the world today.</p>
 <div id='how'>
 <h3>How does Sidenote accomplish it&#8217;s goal?</h3>
 <ul>
-<li>The <a href="javascript:Sidenote.openColumn('#how','#left_column','left%20column')">left column</a> presents highly summarized information.</li>
+<li>The <a href="javascript:Sidenote.openColumnLoud('#how','#left_column','left%20column')">left column</a> presents highly summarized information.</li>
 <li>The <strong>right column</strong> contains detailed information.</li>
-<li>Sidenote avoids <a href="javascript:Sidenote.openColumn('#how','#context_switch','context%20switches')">context switches</a> in the reader&#8217;s brain since both columns are always visible.</li>
+<li>Sidenote avoids <a href="javascript:Sidenote.openColumnLoud('#how','#context_switch','context%20switches')">context switches</a> in the reader&#8217;s brain since both columns are always visible.</li>
 <li>A large font-size combined with a relatively slim column forces brevity upon the writer.</li>
-<li>Sidenote documents follow the <a href="javascript:Sidenote.openColumn('#how','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a></li>
+<li>Sidenote documents follow the <a href="javascript:Sidenote.openColumnLoud('#how','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a></li>
 </ul>
 </div>
 
@@ -158,7 +158,7 @@ I believe this describes the vast majority of documents in the world today.</p>
 <p><a href="https://github.com/mikegagnon/sidenote">https://github.com/mikegagnon/sidenote</a></p>
 <h3>Sidenote is implemented as:</h3>
 <ul>
-<li><a href="https://github.com/mikegagnon/sidenote/blob/master/sidenote.py">A small python program</a> that extends Markdown with <a href="javascript:Sidenote.openColumn('#opensource','#sidenote_link','Sidenote%20link%20syntax')">Sidenote link syntax</a>.</li>
+<li><a href="https://github.com/mikegagnon/sidenote/blob/master/sidenote.py">A small python program</a> that extends Markdown with <a href="javascript:Sidenote.openColumnLoud('#opensource','#sidenote_link','Sidenote%20link%20syntax')">Sidenote link syntax</a>.</li>
 <li><a href="https://github.com/mikegagnon/sidenote/blob/master/js/sidenote.js">A small JavaScript library</a> that renders Sidenote documents.</li>
 </ul>
 <h3>Sidenote uses:</h3>
@@ -192,9 +192,9 @@ means.</p>
 <h3><tt>mknote.sh</tt> does the following:</h3>
 <ol>
 <li>Creates <tt>new_directory_name</tt> to hold your document&#8217;s <tt>.md</tt> files.</li>
-<li>Creates a <a href="javascript:Sidenote.openColumn('#mknote','#sidenote_sh','&lt;tt&gt;sidenote.sh&lt;/tt&gt;')"><tt>sidenote.sh</tt></a> script, which you can use to compile this specific document.</li>
-<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumn('#mknote','#header_file','header.md')">header.md</a></tt> file.</li>
-<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumn('#mknote','#main_file','main.md')">main.md</a></tt> file.</li>
+<li>Creates a <a href="javascript:Sidenote.openColumnLoud('#mknote','#sidenote_sh','&lt;tt&gt;sidenote.sh&lt;/tt&gt;')"><tt>sidenote.sh</tt></a> script, which you can use to compile this specific document.</li>
+<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumnLoud('#mknote','#header_file','header.md')">header.md</a></tt> file.</li>
+<li>Creates a minimal <tt><a href="javascript:Sidenote.openColumnLoud('#mknote','#main_file','main.md')">main.md</a></tt> file.</li>
 <li>Copies necessary javascript files into <tt>new_directory_name</tt>.</li>
 </ol>
 </div>
@@ -217,7 +217,7 @@ means.</p>
 <p>Example:</p>
 <pre><code>    [Link text](##link_destination)
 </code></pre>
-<p>Sidenote adds one single addition to <a href="javascript:Sidenote.openColumn('#sidenote_link','#markdown','Markdown')">Markdown</a> syntax: <em>Sidenote links</em>.</p>
+<p>Sidenote adds one single addition to <a href="javascript:Sidenote.openColumnLoud('#sidenote_link','#markdown','Markdown')">Markdown</a> syntax: <em>Sidenote links</em>.</p>
 <p>A Sidenote link is a link from one column to another column.</p>
 <p>In Markdown, a Sidenote link looks <em>almost</em> like a regular Markdown link. The only difference is that you use two <strong>#</strong> symbols instead of one.</p>
 <p>The <tt>link_destination</tt> specifies the name of <tt>.md</tt> Markdown file you want to link to (leave off the <tt>.md</tt> extension).</p>
@@ -234,22 +234,22 @@ means.</p>
 
 <div id='creatingdocs'>
 <h2>Creating documents with Sidenote is simple</h2>
-<p>The Sidenote compiler joins a group of <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
+<p>The Sidenote compiler joins a group of <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
 <p>Steps to create a new Sidenote document:</p>
 <ol>
-<li><a href="javascript:Sidenote.openColumn('#creatingdocs','#download','Download%20Sidenote')">Download Sidenote</a> with <tt>git clone</tt>.</li>
-<li>Run <a href="javascript:Sidenote.openColumn('#creatingdocs','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a> to create a new, minimal Sidenote document.</li>
-<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> to author <a href="javascript:Sidenote.openColumn('#creatingdocs','#other_md_file','as%20many%20&lt;tt&gt;.md&lt;/tt&gt;%20files%20as%20you%20like')">as many <tt>.md</tt> files as you like</a></li>
-<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_link','Sidenote-link%20syntax')">Sidenote-link syntax</a> to link to a column.</li>
-<li>Use <a href="javascript:Sidenote.openColumn('#creatingdocs','#tilde_anchor','Tilde-anchor%20syntax')">Tilde-anchor syntax</a> to define mulitple columns in the same Markdown file.</li>
+<li><a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#download','Download%20Sidenote')">Download Sidenote</a> with <tt>git clone</tt>.</li>
+<li>Run <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a> to create a new, minimal Sidenote document.</li>
+<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#markdown','Markdown%20syntax')">Markdown syntax</a> to author <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#other_md_file','as%20many%20&lt;tt&gt;.md&lt;/tt&gt;%20files%20as%20you%20like')">as many <tt>.md</tt> files as you like</a></li>
+<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#sidenote_link','Sidenote-link%20syntax')">Sidenote-link syntax</a> to link to a column.</li>
+<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#tilde_anchor','Tilde-anchor%20syntax')">Tilde-anchor syntax</a> to define mulitple columns in the same Markdown file.</li>
 <li>There are two special <tt>.md</tt> files:<ol>
-<li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#header_file','&lt;tt&gt;header.md&lt;/tt&gt;')"><tt>header.md</tt></a></li>
-<li>The <a href="javascript:Sidenote.openColumn('#creatingdocs','#main_file','&lt;tt&gt;main.md&lt;/tt&gt;')"><tt>main.md</tt></a></li>
+<li>The <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#header_file','&lt;tt&gt;header.md&lt;/tt&gt;')"><tt>header.md</tt></a></li>
+<li>The <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#main_file','&lt;tt&gt;main.md&lt;/tt&gt;')"><tt>main.md</tt></a></li>
 </ol>
 </li>
-<li>Use <tt><a href="javascript:Sidenote.openColumn('#creatingdocs','#sidenote_sh','sidenote.sh')">sidenote.sh</a></tt> to compile your directory of <tt>.md</tt> files into a single html file.</li>
+<li>Use <tt><a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#sidenote_sh','sidenote.sh')">sidenote.sh</a></tt> to compile your directory of <tt>.md</tt> files into a single html file.</li>
 </ol>
-<p>Use the <a href="javascript:Sidenote.openColumn('#creatingdocs','#styleguide','Style%20Guide')">Style Guide</a> when writing Sidenote documents.</p>
+<p>Use the <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#styleguide','Style%20Guide')">Style Guide</a> when writing Sidenote documents.</p>
 </div>
 
 <div id='writingdocs'>
@@ -281,7 +281,7 @@ writingdocs.md
 <p><tt>&#91;Open source](&#35;&#35;opensource)</tt></p>
 </blockquote>
 <ol>
-<li>Then compile using <tt><a href="javascript:Sidenote.openColumn('#writingdocs','#commandline','sidenote.py')">sidenote.py</a></tt></li>
+<li>Then compile using <tt><a href="javascript:Sidenote.openColumnLoud('#writingdocs','#commandline','sidenote.py')">sidenote.py</a></tt></li>
 </ol>
 </div>
 
@@ -291,7 +291,7 @@ writingdocs.md
 <ol>
 <li>Help the reader skim your document.</li>
 <li>Be terse.</li>
-<li>Follow the <a href="javascript:Sidenote.openColumn('#styleguide','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a>.</li>
+<li>Follow the <a href="javascript:Sidenote.openColumnLoud('#styleguide','#viz_mantra','Visual%20Information%20Seeking%20Mantra')">Visual Information Seeking Mantra</a>.</li>
 <li>Link text should typically summarize the column it links to, in one complete sentence.</li>
 <li>Paragraphs should only appear in the right-most columns.</li>
 <li>Paragraphs should typically include one or two bold or italicized words, that help the reader skim.</li>
@@ -327,25 +327,25 @@ Both columns have equal focus.</p>
 <div id='why'>
 <h2>Why use Sidenote?</h2>
 <h3>The problem</h3>
-<p>Despite Web technology, most big documents are still written <a href="javascript:Sidenote.openColumn('#why','#as_if_for_paper','as%20if%20for%20paper')">as if for paper</a>.</p>
+<p>Despite Web technology, most big documents are still written <a href="javascript:Sidenote.openColumnLoud('#why','#as_if_for_paper','as%20if%20for%20paper')">as if for paper</a>.</p>
 <h3>Goal</h3>
 <p>Make encyclopedic documents easily digestible.</p>
-<p><a href="javascript:Sidenote.openColumn('#why','#how','Sidenote&amp;#8217;s%20feature%20set')">Sidenote&#8217;s feature set</a> supports its goal.</p>
+<p><a href="javascript:Sidenote.openColumnLoud('#why','#how','Sidenote&amp;#8217;s%20feature%20set')">Sidenote&#8217;s feature set</a> supports its goal.</p>
 </div>
 
 <div id='createdir'>
 <h2>Create a directory to hold your Markdown files</h2>
 <p><img src="img/sample_directory.png" style="float: right"></p>
-<p>The <tt><a href="javascript:Sidenote.openColumn('#createdir','#compile','sidenote.py')">sidenote.py</a></tt> compiler works by searching a directory (and its subdirectories) for <tt>.md</tt> <a href="javascript:Sidenote.openColumn('#createdir','#markdown','Markdown')">Markdown</a> files.
+<p>The <tt><a href="javascript:Sidenote.openColumnLoud('#createdir','#compile','sidenote.py')">sidenote.py</a></tt> compiler works by searching a directory (and its subdirectories) for <tt>.md</tt> <a href="javascript:Sidenote.openColumnLoud('#createdir','#markdown','Markdown')">Markdown</a> files.
 The compiler combines all these files into a single html file.</p>
 <p>The figure on the right shows the directory that holds the Markdown files used to create this Sidenote document:</p>
 </div>
 
 <div id='main'>
 <p><em>Sidenote</em> presents a new way of reading and writing documents.</p>
-<p><a href="javascript:Sidenote.openColumn('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes it easy to skim encyclopedic documents.</p>
-<p><a href="javascript:Sidenote.openColumn('#main','#creatingdocs','Creating%20documents%20with%20Sidenote')">Creating documents with Sidenote</a> is simple, if you are familiar with Markdown and using command-line tools.</p>
-<p>Sidenote is <a href="javascript:Sidenote.openColumn('#main','#opensource','unlicensed')">unlicensed</a> under the public domain.</p>
+<p><a href="javascript:Sidenote.openColumnLoud('#main','#why','Why%20use%20Sidenote?')">Why use Sidenote?</a> Sidenote makes it easy to skim encyclopedic documents.</p>
+<p><a href="javascript:Sidenote.openColumnLoud('#main','#creatingdocs','Creating%20documents%20with%20Sidenote')">Creating documents with Sidenote</a> is simple, if you are familiar with Markdown and using command-line tools.</p>
+<p>Sidenote is <a href="javascript:Sidenote.openColumnLoud('#main','#opensource','unlicensed')">unlicensed</a> under the public domain.</p>
 </div>
 
 <div id='main_file'>
@@ -370,11 +370,11 @@ Sidenote is [open source](##opensource).
 
 <div id='compile'>
 <h2>sidenote.py</h2>
-<p>Joins a group of <a href="javascript:Sidenote.openColumn('#compile','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
+<p>Joins a group of <a href="javascript:Sidenote.openColumnLoud('#compile','#markdown','Markdown')">Markdown</a> files into a single <tt>html</tt> file.</p>
 <p>Usage:</p>
 <pre><code>./sidenote.py doc/ &gt; doc.html
 </code></pre>
-<p>Where <tt>doc</tt> is the directory (created by <a href="javascript:Sidenote.openColumn('#compile','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>) that contains all the <tt>.md</tt> files you want to compile together.</p>
+<p>Where <tt>doc</tt> is the directory (created by <a href="javascript:Sidenote.openColumnLoud('#compile','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a>) that contains all the <tt>.md</tt> files you want to compile together.</p>
 </div>
     </div>
   </body>
