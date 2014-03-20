@@ -272,7 +272,7 @@ def compileSidenote(directory):
 
   keywords = keywordIndex.keys()
   if len(keywords) > 0:
-    keywordRegexStr = "(\W" + "\W)|(\W".join(keywords) + "\W)"
+    keywordRegexStr = "((\W|^)" + "(\W|$))|((\W|^)".join(keywords) + "(\W|$))"
     keywordRegex = re.compile(keywordRegexStr) 
   else:
     keywordRegex = None
