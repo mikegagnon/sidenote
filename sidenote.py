@@ -100,7 +100,7 @@ def toMarkdown(observedKeywords, keywordRegex, keywordIndex, source, line):
     if re.match("\W", keyword[-1]):
       end = keyword[-1]
       keyword = keyword[:-1]
-    pageId = keywordIndex[keyword]
+    pageId = keywordIndex[keyword.lower()]
 
     if pageId == source:
       return "%s%s%s" % (begin, keyword, end)
@@ -225,14 +225,22 @@ def tildeExpand(keywordIndex, pageId, filename):
         columns[currentPageId].append(line)
       else:
         columns[currentPageId] = "".join(columns[currentPageId])
-        parts = line.rstrip().split("~")[1:]
-        currentPageId = parts[0]
-        keywords = parts[1:]
+        parts = line.rstrip().split("~")
+
+        # drop the empty parts
+        words = [word for word in parts if word != ""]
+
+        currentPageId = words[0]
+        keywords = words[1:]
+
+        if line[:2] == "~~":
+          keywords.append(currentPageId)
+
         for keyword in keywords:
           if keyword in keywordIndex:
             raise ValueError("The keyword '%s' is defined multiple times" % keyword)
           else:
-            keywordIndex[keyword] = currentPageId
+            keywordIndex[keyword.lower()] = currentPageId
         if len(currentPageId) == 0:
           # TODO: better error message
           raise ValueError("Found malformed tilde-anchor")
@@ -273,7 +281,7 @@ def compileSidenote(directory):
   keywords = keywordIndex.keys()
   if len(keywords) > 0:
     keywordRegexStr = "((\W|^)" + "(\W|$))|((\W|^)".join(keywords) + "(\W|$))"
-    keywordRegex = re.compile(keywordRegexStr) 
+    keywordRegex = re.compile(keywordRegexStr, flags=re.IGNORECASE) 
   else:
     keywordRegex = None
 
