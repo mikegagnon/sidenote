@@ -117,7 +117,7 @@ def toMarkdown(observedKeywords, keywordRegex, keywordIndex, source, line):
        loudness,
        escapeQuotes(source),
        escapeQuotes(pageId),
-       escapeQuotes(smartypants.smartyPants(keyword)),
+       escapeQuotes(smartypants.smartypants(keyword)),
        end))
 
   # transforms a sidenote link into markdown
@@ -127,7 +127,7 @@ def toMarkdown(observedKeywords, keywordRegex, keywordIndex, source, line):
       (group["linktext"],
        escapeQuotes(source),
        escapeQuotes(group["identifier"]),
-       escapeQuotes(smartypants.smartyPants(group["linktext"]))))
+       escapeQuotes(smartypants.smartypants(group["linktext"]))))
 
   newline = ""
   # tokenize the line into links and non-links
@@ -272,7 +272,7 @@ def convertMarkdown(keywordRegex, keywordIndex, pageId, columnContent):
     output_format = "html5",
     extensions=[SidenoteExtension(keywordRegex, keywordIndex, pageId)])
 
-  return smartypants.smartyPants(md)
+  return smartypants.smartypants(md)
 
 def compileSidenote(directory):
 
