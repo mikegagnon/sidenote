@@ -17,6 +17,9 @@
 #
 # pygments:
 #   pip install pygments
+#
+# To generate css/hilite.css do:
+#   pygmentize -S default -f html -a .codehilite > css/hilite.css
 
 import markdown
 from markdown.preprocessors import Preprocessor
