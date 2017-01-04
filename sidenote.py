@@ -3,7 +3,7 @@
 # This is free and unencumbered software released into the public domain.
 #
 # Requirements:
-#   markdown and smartypants
+#   markdown and smartypants and pygments
 #
 # Markdown:
 #   pip install markdown
@@ -15,6 +15,8 @@
 #   easy_install smartypants
 # https://pypi.python.org/pypi/smartypants
 #
+# pygments:
+#   pip install pygments
 
 import markdown
 from markdown.preprocessors import Preprocessor
@@ -40,6 +42,7 @@ TEMPLATE_HTML = string.Template('''
     $html_head
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/hilite.css">
     <script src="js/jquery-1.10.1.js"></script>
     <script src="js/d3.v3.js"></script>
     <script src="js/lodash.js"></script>
@@ -270,7 +273,7 @@ def loadColumns(directory):
 def convertMarkdown(keywordRegex, keywordIndex, pageId, columnContent):
   md = markdown.markdown(columnContent,
     output_format = "html5",
-    extensions=[SidenoteExtension(keywordRegex, keywordIndex, pageId)])
+    extensions=[SidenoteExtension(keywordRegex, keywordIndex, pageId)] + ['codehilite'])
 
   return smartypants.smartypants(md)
 
