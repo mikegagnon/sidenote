@@ -6,16 +6,6 @@
 
 Sidenote is unlicensed under the public domain.
 
-    :::html
-    <div>asdf</div>
-
-
-asdf
-
-    :::python hl_lines="1"
-
-    def foo(x):
-        return x + 1
 ~ideas
 ## Ideas
 
