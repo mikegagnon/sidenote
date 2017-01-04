@@ -9,11 +9,12 @@ Steps to create a new Sidenote document:
 2. Run [<tt>mknote.sh</tt>](##mknote) to create a new, minimal Sidenote document.
 3. Use [Markdown syntax](##markdown) to author [as many <tt>.md</tt> files as you like](##other_md_file)
 4. Use [Sidenote-link syntax](##sidenote_link) to link to a column.
-5. Use [Tilde-anchor syntax](##tilde_anchor) to define mulitple columns in the same Markdown file.
-6. There are two special <tt>.md</tt> files:
+5. Use [Tilde-anchor syntax](##tilde_anchor) to define multiple columns in the same Markdown file.
+6. Use [::: syntax](##triple_colon) to embed source code snippets.
+7. There are two special <tt>.md</tt> files:
     1. The [<tt>header.md</tt>](##header_file)
     2. The [<tt>main.md</tt>](##main_file)
-7. Use <tt>[sidenote.sh](##sidenote_sh)</tt> to compile your directory of <tt>.md</tt> files into a single html file.
+8. Use <tt>[sidenote.sh](##sidenote_sh)</tt> to compile your directory of <tt>.md</tt> files into a single html file.
 
 Use the [Style Guide](##styleguide) when writing Sidenote documents.
 
@@ -42,3 +43,24 @@ In this example, <tt>main.md</tt> defines three independent columns:
 * <tt>main<tt>
 * <tt>column2<tt>
 * <tt>col3<tt>
+
+~triple_colon
+### ::: syntax
+
+#### Example markdown
+
+	:::md
+	This is python code:
+
+		:::python
+		def foo(x):
+			return x + 1
+
+
+#### Result
+
+This is python code:
+
+	:::python
+	def foo(x):
+		return x + 1

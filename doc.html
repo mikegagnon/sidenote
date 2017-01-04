@@ -252,7 +252,8 @@ means.</p>
 <li>Run <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#mknote','&lt;tt&gt;mknote.sh&lt;/tt&gt;')"><tt>mknote.sh</tt></a> to create a new, minimal Sidenote document.</li>
 <li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#markdown','Markdown syntax')">Markdown syntax</a> to author <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#other_md_file','as many &lt;tt&gt;.md&lt;/tt&gt; files as you like')">as many <tt>.md</tt> files as you like</a></li>
 <li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#sidenote_link','Sidenote-link syntax')">Sidenote-link syntax</a> to link to a column.</li>
-<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#tilde_anchor','Tilde-anchor syntax')">Tilde-anchor syntax</a> to define mulitple columns in the same Markdown file.</li>
+<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#tilde_anchor','Tilde-anchor syntax')">Tilde-anchor syntax</a> to define multiple columns in the same Markdown file.</li>
+<li>Use <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#triple_colon','::: syntax')">::: syntax</a> to embed source code snippets.</li>
 <li>There are two special <tt>.md</tt> files:<ol>
 <li>The <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#header_file','&lt;tt&gt;header.md&lt;/tt&gt;')"><tt>header.md</tt></a></li>
 <li>The <a href="javascript:Sidenote.openColumnLoud('#creatingdocs','#main_file','&lt;tt&gt;main.md&lt;/tt&gt;')"><tt>main.md</tt></a></li>
@@ -296,6 +297,24 @@ writingdocs.md
 <ol>
 <li>Then compile using <tt><a href="javascript:Sidenote.openColumnLoud('#writingdocs','#commandline','sidenote.py')">sidenote.py</a></tt></li>
 </ol>
+</div>
+
+<div id='triple_colon'>
+<h3>::: syntax</h3>
+<h4>Example markdown</h4>
+<div class="codehilite"><pre><span></span>This is python code:
+
+    :::python
+    def foo(x):
+        return x + 1
+</pre></div>
+
+
+<h4>Result</h4>
+<p>This is python code:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
 </div>
 
 <div id='styleguide'>
