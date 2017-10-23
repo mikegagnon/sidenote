@@ -3,93 +3,38 @@
  * source code.
  */ 
 
-  /* first for Internet Explorer < 9 */
-  @font-face {
-    font-family: ScalaWebPro;
-    src: url("../fonts/ScalaWebPro.eot");
-  }
-  /* then for WOFF-capable browsers */
-  @font-face {
-    font-family: ScalaWebPro;
-    src: url("../fonts/ScalaWebPro.woff") format("woff");
-  }
-
 body {
   overflow:hidden; /* This will remove the default scroll, not really needed, safer nonetheless */
+  font-family: serif;
 }
 html {
-  font-size: 16px;
-  -webkit-text-size-adjust: 15;
-      -ms-text-size-adjust: 15px;
-  font-family: ScalaWebPro, Georgia, Times, serif;
-  line-height: 20px;
-  color:#333;
-  background:#fff;
-  height: 100%;
+  font-family: serif;
 }
 p {
   margin-bottom: 20px;
 }
 em {
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-}
-i {
-  font-family: "Times New Roman", Times, serif;
   font-style: italic;
 }
 
+i {
+  font-style: italic;
+}
+h1 {
+  margin-top: 15px;
+  margin-left: 43px;
+}
 strong {
-  font-family: Georgia, Times, serif;
   font-style: bold;
 }
 b {
-  font-family: Georgia, Times, serif;
   font-style: bold;
 }
 body {
   height: 100%;
   margin: 0px;
 }
-h1 {
-  font-family: Georgia, Times, serif;
-  font-size: 25px;
-  line-height: 1em;
-  padding: 10px 0px 0px 0px;
-  margin: 0px;
-  color:#ffd200;
-}
-h2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1em;
-  padding: 0px;
-  margin-top: 0px;
-  margin-bottom: 15px;
-}
-h3 {
-  font-size: 20px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-}
-h4 {
-  font-size: 18px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-}
-h5 {
-  font-size: 17px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-}
-h6 {
-  font-size: 17px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.3em;
-}
-code {
-  font-size: 80%;
-}
+
 a[href^="http://"]{
   color: #d44;
   text-decoration: underline;
@@ -100,25 +45,18 @@ a[href^="https://"]{
 }
 a[href^="javascript:Sidenote.openColumnQuiet"]{
   color: #333;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a[href^="javascript:Sidenote.openColumnLoud"]{
   color: #44d;
   text-decoration: underline;
 }
-A:hover {text-decoration: underline}
-.headerbox {
-  padding: 0px 0px 6px 10px;
-  margin: 0px;
-  background-color: #102955;
-  color:rgba(255, 255,255, 0.5);
+
+a {
+  text-decoration: underline;
+  color: blue;
 }
-.headerbox a {
-  color:rgba(128, 128, 255, 0.8);
-}
-.headerbox p {
-  margin: 0px;
-}
+
 .content-storage {
   display:none;
 }
@@ -138,7 +76,6 @@ A:hover {text-decoration: underline}
   margin-right: 10px;
 }
 .column-border-right {
-  border-right: 2px solid;
 }
 .column {
   position:absolute;
@@ -151,13 +88,22 @@ A:hover {text-decoration: underline}
   padding-right: 15px;
   float: left;
 }
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
 #breadcrumbs {
-  font-size: 17px;
-  padding: 10px 0px 5px 10px;
-  margin: 0px;
-  border-bottom: 1px solid;
+  margin-left: 43px;
   border-color: #aaa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #breadcrumbs a {
   font-weight:bold;

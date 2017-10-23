@@ -4,7 +4,7 @@
 
 var Sidenote = {
 
-  num_visible_columns: 2,
+  num_visible_columns: 3,
 
   min_column_width: 50,
 
@@ -239,7 +239,7 @@ var Sidenote = {
       .map( function(columnId) {
         if (_(columns).contains(columnId)) {
           // do not linkify visible columns
-          return "<li class='active'>" + Sidenote.columnTitle[columnId] + "</li>"
+          return Sidenote.columnTitle[columnId]
         } else {
           return ('<a href="' +
             "javascript:Sidenote.openColumnLoud('" +
@@ -249,7 +249,7 @@ var Sidenote = {
             Sidenote.columnTitle[columnId] + "</a>")
         }
       })
-      .join(" <span class='divider'>/</span> </li>")
+      .join("&nbsp; <span class='divider'>/</span> &nbsp;")
 
     nav_html += "</li>"
     $("#breadcrumbs").html(nav_html)
