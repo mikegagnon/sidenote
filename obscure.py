@@ -32,7 +32,6 @@ def obscure(filename):
                 newline += part
 
         if TILDE_ANCHOR_PARSER.match(newline):
-            print "FOO"
             newline = newline.replace("~", "~" + key)
 
         print newline,
